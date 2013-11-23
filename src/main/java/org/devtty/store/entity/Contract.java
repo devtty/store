@@ -1,10 +1,12 @@
 package org.devtty.store.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -24,7 +26,6 @@ public class Contract implements Serializable {
     private String additional;
     private String ass;
     private String contact;
-    private String contact;
     private String fixdate;
     private String fixterm;
     private String laddress;
@@ -37,7 +38,9 @@ public class Contract implements Serializable {
     private Double bruttoweight;
     private Double insuranceamount;
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date contractdate;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date execdate;
     
     private Boolean createexa;
