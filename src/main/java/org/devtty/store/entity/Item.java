@@ -66,12 +66,17 @@ public class Item implements Serializable {
     private ItemStatus status;
     
     @ManyToOne
+    private Collection collection;
+    
+    @ManyToOne
     private Store store;
     
     @ManyToOne
     private Client client;
     
-    
+    @ManyToOne
+    private User lastChangeBy;
+            
     public Long getId() {
         return id;
     }

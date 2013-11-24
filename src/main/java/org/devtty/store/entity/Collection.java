@@ -3,12 +3,14 @@ package org.devtty.store.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,6 +22,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Collection implements Serializable {
+    @OneToMany(mappedBy = "collection")
+    private List<Item> items;
     
     private static final long serialVersionUID = 1L;
     
