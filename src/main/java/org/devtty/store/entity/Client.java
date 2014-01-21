@@ -30,7 +30,7 @@ public class Client implements Serializable {
     private String address;
     
     public Long getId() {
-        return id;
+        return id; 
     }
 
     public void setId(Long id) {
