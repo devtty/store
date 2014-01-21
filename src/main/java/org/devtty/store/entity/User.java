@@ -9,6 +9,7 @@ import javax.persistence.Id;
 /**
  *
  * @author Denis Renning
+ * 
  */
 @Entity
 //@IdentityEntity(EntityType.IDENTITY_OBJECT)
