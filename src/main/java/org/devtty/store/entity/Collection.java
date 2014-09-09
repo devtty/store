@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,6 +22,7 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
+@Table(name = "ST_COLLECTION")
 public class Collection implements Serializable {
     @OneToMany(mappedBy = "collection")
     private List<Item> items;

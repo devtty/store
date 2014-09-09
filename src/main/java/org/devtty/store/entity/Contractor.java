@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
  * @author Denis Renning
  */
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "name"))
+@Table(name = "ST_CONTRACTOR", uniqueConstraints = @UniqueConstraint(columnNames = "name"))
 public class Contractor implements Serializable {
     
     private static final long serialVersionUID = 1L;

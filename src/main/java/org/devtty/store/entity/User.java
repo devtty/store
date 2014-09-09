@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
@@ -12,6 +13,7 @@ import javax.persistence.Id;
  * 
  */
 @Entity
+@Table(name = "ST_USER")
 //@IdentityEntity(EntityType.IDENTITY_OBJECT)
 public class User implements Serializable {
     
@@ -25,6 +27,8 @@ public class User implements Serializable {
     private String login;
     private String pass;
     private String email;
+    
+    
     
     private boolean accounting;
     

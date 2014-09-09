@@ -7,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Denis Renning
  */
 @Entity
+@Table(name = "ST_STORE")
 public class Store implements Serializable {
     @OneToMany(mappedBy = "store")
     private List<Item> items;

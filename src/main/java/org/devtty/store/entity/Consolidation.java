@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -14,6 +15,7 @@ import javax.persistence.Temporal;
  * TODO similarities to contract (proof)
  */
 @Entity
+@Table(name = "ST_CONSOLIDATION")
 public class Consolidation implements Serializable {
     
     private static final long serialVersionUID = 1L;

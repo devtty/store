@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
  * @author Denis Renning
  */
 @Entity
+@Table(name = "ST_CLIENT")
 public class Client implements Serializable {
     @OneToMany(mappedBy = "client")
     private List<Item> items;
