@@ -83,7 +83,7 @@ public class UserPersistenceTest {
 
 
     @After
-    public void commitTransaction(){
+    public void commitTransaction() throws Exception{
 	utx.commit();
     }
 
