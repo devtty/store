@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.javaee_api>7.0</version.javaee_api>
         <version.wildfly>8.1.0.Final</version.wildfly>
-        <version.deltaspike>1.0.2</version.deltaspike>
+        <version.deltaspike>1.0.3</version.deltaspike>
         <version.activiti>5.16.2</version.activiti>
     </properties>
     
