@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -13,7 +16,7 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name = "ST_USER")
+@Table(name = "ST_USER", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 //@IdentityEntity(EntityType.IDENTITY_OBJECT)
 public class User implements Serializable {
     
@@ -23,9 +26,16 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
+    @Size(min = 5, max=60)
     private String name;
+    
+    @NotNull
+    @Size(min = 5, max=16)
     private String login;
     private String pass;
+    
+    @NotNull
     private String email;
     private String role;
     
