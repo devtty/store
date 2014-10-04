@@ -1,5 +1,7 @@
 package org.devtty.store.util;
 
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
@@ -12,17 +14,19 @@ import javax.persistence.PersistenceUnit;
  */
 public class EntityManagerProducer {
     
-    @PersistenceUnit
-    private EntityManagerFactory emf;
+    @PersistenceUnit(unitName = "storePU")
+    private EntityManagerFactory entityManagerFactory;
     
     @Produces
+    @Default
+    @RequestScoped
     public EntityManager create(){
-        return emf.createEntityManager();
+        return this.entityManagerFactory.createEntityManager();
     }
     
-    public void close(@Disposes EntityManager em){
-        if(em.isOpen()){
-            em.close();
+    public void dispose(@Disposes @Default EntityManager entityManager){
+        if(entityManager.isOpen()){
+            entityManager.close();
         }
     }
 }
