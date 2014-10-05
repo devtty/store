@@ -31,7 +31,8 @@ public class UserPersistenceTest {
 	return ShrinkWrap.create(WebArchive.class, "test.war")
 	    .addPackage(User.class.getPackage())
 	    .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
-	    .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
+	    .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+            .addAsWebInfResource("test-postgresql-ds.xml", "test-postgresql-ds.xml");
     }
 
     private static final String[] USER_LOGINS = {
@@ -69,6 +70,8 @@ public class UserPersistenceTest {
 	for(String login : USER_LOGINS){
 	    User user = new User();
 	    user.setLogin(login);
+            user.setName(login + "pass");
+            user.setEmail(login + "@devtty.de");
 	    em.persist(user);
 	}
 	
