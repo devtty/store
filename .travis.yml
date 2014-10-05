@@ -7,3 +7,5 @@ jdk:
 os:
   - linux
   - osx
+before_script:
+  - psql -c 'create database storedb;' -U postgres
