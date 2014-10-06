@@ -32,7 +32,7 @@ public class UserPersistenceTest {
 	    .addPackage(User.class.getPackage())
 	    .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 	    .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addAsWebInfResource("test-postgresql-ds.xml", "test-postgresql-ds.xml");
+            .addAsWebInfResource("test-h2-ds.xml", "test-h2-ds.xml");
     }
 
     private static final String[] USER_LOGINS = {
