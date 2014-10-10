@@ -307,7 +307,7 @@
                                     </artifactItems>
                                 </configuration>
                             </execution>
-                                
+                                  
                         </executions>
                     </plugin>
                     <plugin>

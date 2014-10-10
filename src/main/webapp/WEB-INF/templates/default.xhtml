@@ -23,10 +23,10 @@
             <div id="left">
                 <ui:insert name="left">
                     <p:panelGrid columns="1">
-                        <p:link styleClass="fa fa-user fa-2x" value="Users" outcome="/users/index" />
-                        <p:link styleClass="fa fa-users fa-2x" value="Customers" />
-                        <p:link styleClass="fa fa-folder-open fa-2x" value="Collections" />
-                        <p:link styleClass="fa fa-gift fa-2x" value="Items" />
+                        <p:link styleClass="fa fa-user fa-2x" value="#{msg['nav.users']}" outcome="/users/index" />
+                        <p:link styleClass="fa fa-users fa-2x" value="#{msg['nav.clients']}" />
+                        <p:link styleClass="fa fa-folder-open fa-2x" value="#{msg['nav.collections']}" />
+                        <p:link styleClass="fa fa-gift fa-2x" value="#{msg['nav.items']}" />
                     </p:panelGrid>
                     
                 </ui:insert>
