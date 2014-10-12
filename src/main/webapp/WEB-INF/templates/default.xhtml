@@ -3,47 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css" />
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
-        
         <title>Facelets Template</title>
     </h:head>
 
     <h:body>
 
-        <div id="top">
-            <ui:insert name="top">Top</ui:insert>
-        </div>
-        <div>
-            <div id="left">
-                <ui:insert name="left">
-                    <p:panelGrid columns="1">
-                        <p:link styleClass="fa fa-user fa-2x" value="#{msg['nav.users']}" outcome="/users/index" />
-                        <p:link styleClass="fa fa-users fa-2x" value="#{msg['nav.clients']}" />
-                        <p:link styleClass="fa fa-folder-open fa-2x" value="#{msg['nav.collections']}" />
-                        <p:link styleClass="fa fa-gift fa-2x" value="#{msg['nav.items']}" />
-                    </p:panelGrid>
-                    
-                </ui:insert>
-            </div>
-            <div>
-                <div id="right">
-                    <ui:insert name="right">Right</ui:insert>
-                </div>
-                <div id="content" class="right_content">
-                    <ui:insert name="content">Content</ui:insert>
-                </div>
-            </div>
-        </div>
-        <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
-        </div>
-
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="50">
+                <ui:insert name="top">Top</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50">
+                <ui:insert name="bottom">Bottom</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="150" collapsible="true" header="Menu" resizable="true">
+                    <ui:insert name="left">
+                        <p:panelGrid columns="1">
+                            <h:link styleClass="fa fa-user fa-2x" value="#{msg['nav.users']}" outcome="/users/index" />
+                            <h:link styleClass="fa fa-users fa-2x" value="#{msg['nav.clients']}" />
+                            <h:link styleClass="fa fa-folder-open fa-2x" value="#{msg['nav.collections']}" />
+                            <h:link styleClass="fa fa-gift fa-2x" value="#{msg['nav.items']}" />
+                        </p:panelGrid>
+                    </ui:insert>                              
+            </p:layoutUnit>
+            <p:layoutUnit position="east" size="200" collapsible="true" collapsed="true">
+                <ui:insert name="right">Right</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <p:layout>
+                    <p:layoutUnit position="center">
+                        <ui:insert name="content">Content</ui:insert>
+                    </p:layoutUnit>
+                    <p:layoutUnit position="south" size="50">
+                        <ui:insert name="buttons">buttons</ui:insert>
+                    </p:layoutUnit>
+                </p:layout>
+            </p:layoutUnit>
+        </p:layout>
+        
     </h:body>
 
 </html>
