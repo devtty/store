@@ -1,7 +1,9 @@
 package org.devtty.store.service;
 
+import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.activiti.engine.ProcessEngine;
@@ -14,16 +16,14 @@ import org.devtty.store.entity.User;
  * @author Denis Renning
  */
 @Named
-@RequestScoped
-public class UserBean{
+@ViewScoped
+public class UserBean implements Serializable{
     
     @Inject UserRepository userRepository;
     @Inject ProcessEngine processEngine;
     
-    public List<User> getUsers(){
-        return userRepository.findAll();
-    }
-
+    private List<User> users;
+    
     public List<Group> getActivitigroups(){
         return processEngine.getIdentityService().createNativeGroupQuery().list();
     }
@@ -34,5 +34,18 @@ public class UserBean{
 
     public List<Group> getUsergroups(){
         return processEngine.getIdentityService().createGroupQuery().list();
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+    
+    @PostConstruct
+    public void init(){
+        users = userRepository.findAll();
     }
 }
