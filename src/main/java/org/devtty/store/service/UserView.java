@@ -17,7 +17,7 @@ import org.devtty.store.entity.User;
  */
 @Named
 @ViewScoped
-public class UserBean implements Serializable{
+public class UserView implements Serializable{
     
     @Inject UserRepository userRepository;
     @Inject ProcessEngine processEngine;

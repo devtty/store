@@ -8,7 +8,7 @@
 
     <ui:define name="content">
         <h:form>
-        <p:dataTable id="userTable" var="user" value="#{userBean.users}">
+        <p:dataTable id="userTable" var="user" value="#{userView.users}">
             <f:facet name="header">Benutzer</f:facet>
             <p:column headerText="name" sortBy="#{user.name}"><h:outputText value="#{user.name}"/></p:column>
             <p:column headerText="email" sortBy="#{user.email}"><h:outputText value="#{user.email}"/></p:column>
