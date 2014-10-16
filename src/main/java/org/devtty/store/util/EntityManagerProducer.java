@@ -1,5 +1,6 @@
 package org.devtty.store.util;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
@@ -12,6 +13,7 @@ import javax.persistence.PersistenceUnit;
  *
  * @author Denis Renning
  */
+@ApplicationScoped
 public class EntityManagerProducer {
     
     @PersistenceUnit(unitName = "storePU")
