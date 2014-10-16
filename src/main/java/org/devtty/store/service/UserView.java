@@ -22,6 +22,8 @@ public class UserView implements Serializable{
     @Inject UserRepository userRepository;
     @Inject ProcessEngine processEngine;
     
+    private User user;
+    
     private List<User> users;
     
     public List<Group> getActivitigroups(){
@@ -43,9 +45,20 @@ public class UserView implements Serializable{
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
     
     @PostConstruct
     public void init(){
         users = userRepository.findAll();
+        user = users.get(0);
     }
 }
