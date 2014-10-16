@@ -215,3 +215,4 @@ pip-log.txt
 .mr.developer.cfg
 /target/
 /faces-config.NavData
+/src/test/resources-wildfly-managed/test-oracle-ds.xml
