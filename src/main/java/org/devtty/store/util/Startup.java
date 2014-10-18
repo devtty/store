@@ -45,7 +45,16 @@ public class Startup {
         //count application starts
         c = entityManager.find(Config.class, "applicationStart");
         
-        int starts = Integer.parseInt(c.getValue());
+        logger.info("C: " + c);
+        
+        int starts = 0;
+        
+        if(c != null){
+            starts =  Integer.parseInt(c.getValue());
+        }else{
+            c = new Config("applicationStart", "0");
+        }
+        
         c.setValue(Integer.toString(starts++));
         entityManager.persist(c);
         
