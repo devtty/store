@@ -1,10 +1,14 @@
 package org.devtty.store.util;
 
+import java.util.List;
 import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import org.activiti.engine.IdentityService;
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.identity.Group;
 import org.devtty.store.entity.Config;
 import org.slf4j.Logger;
 
@@ -26,8 +30,11 @@ public class Startup {
     @Inject
     EntityManager entityManager;
     
+    @Inject
+    IdentityService identityService;
+    
     @PostConstruct
-                public void init() {
+    public void init() {
     //public void onCreate(@Observes @Initialized ServletContext context){
         logger.info("*** START UP STORE");
         
@@ -59,7 +66,22 @@ public class Startup {
         entityManager.persist(c);
         
         entityManager.close();
+        
+        //check activiti
+        logger.info("A");
+        List<Group> groups = identityService.createGroupQuery().list();
+        for(Group group : groups){
+            logger.info("Group: " + group.getName() + "(" + group.getType() + ")");
+        }
+        if(identityService.createGroupQuery().groupId("storage").list().size() == 0){
+            logger.info("Group storage not found ... created");
+            Group g = identityService.newGroup("storage");
+            g.setType("assignment");
+            g.setName("Storage");
+            identityService.saveGroup(g);
+        }
 
+        logger.info("B");
     }
     
 }
