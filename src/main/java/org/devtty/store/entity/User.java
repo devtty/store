@@ -36,6 +36,7 @@ public class User implements Serializable {
     private String pass;
     
     @NotNull
+    @Size(min = 5, max=16)
     private String email;
     private String role;
     
