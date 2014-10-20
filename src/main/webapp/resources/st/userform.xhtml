@@ -15,7 +15,7 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <h:form>
-            <p:panel id="panel" header="New User">
+            <p:panel id="panel" header="#{cc.resourceBundleMap.header}">
                 <h:panelGrid columns="3">
                     <p:outputLabel value="#{cc.resourceBundleMap.name}" for="name" />
                     <p:inputText id="name" value="#{cc.attrs.value.user.name}">
@@ -26,7 +26,9 @@
                     <p:password value="#{cc.attrs.value.user.pass}" id="password" required="true" />
                     <p:message for="password" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.email}" for="email" />
-                    <p:inputText id="email" value="#{cc.attrs.value.user.email}" />
+                    <p:inputText id="email" value="#{cc.attrs.value.user.email}">
+                        <f:validateBean />
+                    </p:inputText>
                     <p:message for="email" style="color:red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.groups}" for="groups" />
                     <p:selectManyCheckbox id="groups">
