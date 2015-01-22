@@ -22,6 +22,11 @@
                         <f:validateLength minimum="5" maximum="60"/>
                     </p:inputText>
                     <p:message for="name" style="color: red"/>
+                    <p:outputLabel value="#{cc.resourceBundleMap.login}" for="login" />
+                    <p:inputText id="login" value="#{cc.attrs.value.user.login}">
+                        <f:validateBean />
+                    </p:inputText>
+                    <p:message for="login" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.password}" for="password"/>
                     <p:password value="#{cc.attrs.value.user.pass}" id="password" required="true" />
                     <p:message for="password" style="color: red"/>
