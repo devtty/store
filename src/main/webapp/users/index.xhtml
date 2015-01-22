@@ -7,9 +7,14 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
-        <p:dataTable id="userTable" var="user" value="#{userView.users}">
+        <h:form id="formContent">
+            <p:dataTable id="userTable" var="user" value="#{userView.users}" selection="#{userView.selectedUsers}" rowKey="#{user.id}">
             <f:facet name="header">Benutzer</f:facet>
+            <p:ajax event="rowSelect" update=":formButtons" />
+            <p:ajax event="rowUnselect" update=":formButtons" />
+            <p:ajax event="rowSelectCheckbox" update=":formButtons" />
+            <p:ajax event="rowUnselectCheckbox" update=":formButtons" />
+            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
             <p:column headerText="name" sortBy="#{user.name}"><h:outputText value="#{user.name}"/></p:column>
             <p:column headerText="email" sortBy="#{user.email}"><h:outputText value="#{user.email}"/></p:column>
             <p:column headerText="role" sortBy="#{user.role}"><h:outputText value="#{user.role}"/></p:column>
@@ -18,7 +23,18 @@
     </ui:define>
     
     <ui:define name="buttons">
-        <h:form><p:commandButton value="New" action="/users/edit" /></h:form>
+        <h:form id="formButtons">
+            <p:commandButton id="new" value="#{msg['action.new']}" action="#{userView.newUser}" />
+            <p:commandButton id="edit" value="#{msg['action.edit']}" action="/users/edit" disabled="#{userView.selectedUsers.size() != 1}" />
+            <p:commandButton id="delete" value="#{msg['action.delete']}" update=":formContent, :formButtons" actionListener="#{userView.deleteUser()}" disabled="#{userView.selectedUsers.size() == 0}">
+                <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
+            </p:commandButton>
+            
+            <p:confirmDialog global="true" showEffect="fade">
+                <p:commandButton value="#{msg['yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="#{msg['no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
     </ui:define>
 
 </ui:composition>

@@ -3,9 +3,6 @@ package org.devtty.store.service;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.view.ViewScoped;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,8 +18,8 @@ import org.slf4j.Logger;
  * @author Denis Renning
  */
 @Named
-//@ViewScoped
-@RequestScoped
+@WindowScoped
+//@RequestScoped
 //@ConversationScoped
 public class UserView implements Serializable{
     
@@ -33,6 +30,8 @@ public class UserView implements Serializable{
     private User user;
     
     private List<User> users;
+    
+    private List<User> selectedUsers;
     
     public List<Group> getActivitigroups(){
         return processEngine.getIdentityService().createNativeGroupQuery().list();
@@ -61,12 +60,31 @@ public class UserView implements Serializable{
     public void setUser(User user) {
         this.user = user;
     }
-    
+
+    public List<User> getSelectedUsers() {
+        return selectedUsers;
+    }
+
+    public void setSelectedUsers(List<User> selectedUsers) {
+        this.selectedUsers = selectedUsers;
+    }
+
     public void save(){
         userRepository.save(user);
         logger.info("saved " + user);
     }
     
+    public String newUser(){
+        this.user = new User();
+        return "/users/edit";
+    }
+    
+    public void deleteUser(){
+        for(User u : selectedUsers){
+            logger.info("delete " + u.getLogin());
+        }
+        init();
+    }
     
     @PostConstruct
     public void init(){
