@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -20,7 +21,8 @@ public class Store implements Serializable {
     private List<Item> items;
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ST_SQ_STORE")
+    @SequenceGenerator(name="ST_SQ_STORE", sequenceName="ST_SQ_STORE")
     private Long id;
 
     public Long getId() {
