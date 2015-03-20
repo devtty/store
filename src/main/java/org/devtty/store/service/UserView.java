@@ -19,8 +19,6 @@ import org.slf4j.Logger;
  */
 @Named
 @WindowScoped
-//@RequestScoped
-//@ConversationScoped
 public class UserView implements Serializable{
     
     @Inject UserRepository userRepository;
@@ -69,13 +67,20 @@ public class UserView implements Serializable{
         this.selectedUsers = selectedUsers;
     }
 
-    public void save(){
+    public String save(){
         userRepository.save(user);
         logger.info("saved " + user);
+        init();
+        return "/users/index";
     }
     
     public String newUser(){
         this.user = new User();
+        return "/users/edit";
+    }
+    
+    public String editUser(){
+        this.user = this.getSelectedUsers().get(0);
         return "/users/edit";
     }
     
