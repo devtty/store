@@ -42,7 +42,7 @@
                     <p:message for="groups" style="color:red"/>
                 </h:panelGrid>
             
-                <p:commandButton id="loginButton" update="@form" value="#{msg['submit']}" actionListener="#{cc.attrs.value.save()}" />
+                <p:commandButton id="loginButton" update="@form" value="#{msg['submit']}" action="#{cc.attrs.value.save()}" />
             </p:panel>
         </h:form>
     </cc:implementation>
