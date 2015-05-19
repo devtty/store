@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  *
@@ -16,13 +18,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ST_STORE")
+@Indexed
 public class Store implements Serializable {
     @OneToMany(mappedBy = "store")
     private List<Item> items;
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ST_SQ_STORE")
     @SequenceGenerator(name="ST_SQ_STORE", sequenceName="ST_SQ_STORE")
+    @DocumentId
     private Long id;
 
     public Long getId() {

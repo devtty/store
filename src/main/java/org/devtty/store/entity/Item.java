@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  *
@@ -18,6 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "ST_ITEM")
+@Indexed
 public class Item implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -25,12 +29,15 @@ public class Item implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ST_SQ_ITEM")
     @SequenceGenerator(name="ST_SQ_ITEM", sequenceName="ST_SQ_ITEM")
+    @DocumentId
     private Long id;
 
     private String clientRef;
     private String consolidate;
     private String startlocation;
     private String startcorporation;
+    
+    @Field
     private String name;
     private String inMProblem;
     private String docs;

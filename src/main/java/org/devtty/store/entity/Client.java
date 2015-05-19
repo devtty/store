@@ -10,6 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  *
@@ -17,6 +20,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "ST_CLIENT")
+@Indexed
 public class Client implements Serializable {
     @OneToMany(mappedBy = "client")
     private List<Item> items;
@@ -26,9 +30,11 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="ST_SQ_CLIENT")
     @SequenceGenerator(name="ST_SQ_CLIENT", sequenceName="ST_SQ_CLIENT")
+    @DocumentId
     private Long id;
 
     @NotNull
+    @Field
     private String name;
     
     private String address;
