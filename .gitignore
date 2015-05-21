@@ -216,3 +216,5 @@ pip-log.txt
 /target/
 /faces-config.NavData
 /src/test/resources-wildfly-managed/test-oracle-ds.xml
+/nbactions.xml
+/nb-configuration.xml
