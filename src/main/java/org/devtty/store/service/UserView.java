@@ -11,6 +11,7 @@ import org.activiti.engine.identity.Group;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.devtty.store.entity.User;
+import org.devtty.store.security.Admin;
 import org.slf4j.Logger;
 
 /**
@@ -19,6 +20,7 @@ import org.slf4j.Logger;
  */
 @Named
 @WindowScoped
+@Admin
 public class UserView implements Serializable{
     
     @Inject UserRepository userRepository;
@@ -42,7 +44,7 @@ public class UserView implements Serializable{
     public List<Group> getUsergroups(){
         return processEngine.getIdentityService().createGroupQuery().groupType("assignment").list();
     }
-
+    
     public List<User> getUsers() {
         return users;
     }
