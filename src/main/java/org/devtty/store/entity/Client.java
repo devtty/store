@@ -30,7 +30,7 @@ import org.hibernate.search.annotations.TokenizerDef;
 @Entity
 @Table(name = "ST_CLIENT")
 @Indexed
-@AnalyzerDef(name = "myanalyzer",
+@AnalyzerDef(name = "clientanalyzer",
         tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
         filters = {
             @TokenFilterDef(factory = LowerCaseFilterFactory.class),
@@ -38,7 +38,7 @@ import org.hibernate.search.annotations.TokenizerDef;
                 @Parameter(name = "maxGramSize", value = "10"),
                 @Parameter(name = "minGramSize", value = "3"),
                 @Parameter(name = "side", value = "front")}),})
-@Analyzer(definition = "myanalyzer")
+@Analyzer(definition = "clientanalyzer")
 public class Client implements Serializable {
 
     @OneToMany(mappedBy = "client")
@@ -53,7 +53,7 @@ public class Client implements Serializable {
     private Long id;
 
     @NotNull
-    @Field(index = org.hibernate.search.annotations.Index.YES, store = org.hibernate.search.annotations.Store.YES)
+    @Field
     private String name;
 
     private String address;
