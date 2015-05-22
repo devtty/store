@@ -25,13 +25,19 @@
     <h:body>
         <ds:windowId />
         <pe:layout fullPage="true">
-            <pe:layoutPane position="north" size="50" closable="false" resizable="false" spacingOpen="3" >
-                <h:outputText value="Store"/>
-                <h:outputText value="#{request.remoteUser}" />
-                <h:outputText value="Admin" rendered="#{request.isUserInRole('Admin')}" />
-                <h:outputText value="User" rendered="#{request.isUserInRole('User')}" />
-                <h:outputText value="Supervisor" rendered="#{request.isUserInRole('Supervisor')}" />
-                <h:form><st:searchbox value="#{searchView}" /></h:form>
+            <pe:layoutPane position="north" size="65" closable="false" resizable="false" spacingOpen="3" >
+                <h:panelGrid columns="2" width="100%">
+                    <h:panelGroup>
+                        <h:graphicImage library="images" name="logo.png" />
+                        <h:outputText value="#{request.remoteUser}" />
+                        <h:outputText value="Admin" rendered="#{request.isUserInRole('Admin')}" />
+                        <h:outputText value="User" rendered="#{request.isUserInRole('User')}" />
+                        <h:outputText value="Supervisor" rendered="#{request.isUserInRole('Supervisor')}" />
+                    </h:panelGroup>
+                    <h:panelGroup style="text-align: right;">
+                        <h:form><st:searchbox value="#{searchView}" /></h:form>
+                    </h:panelGroup>
+                </h:panelGrid>
             </pe:layoutPane>
             <pe:layoutPane position="south" size="50" closable="false" resizable="false" spacingOpen="3">
                 <h:outputText value="CP2015" />

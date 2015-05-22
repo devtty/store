@@ -9,11 +9,12 @@
     <ui:define name="content">
         <h:form id="formContent">
             <p:dataTable id="userTable" var="user" value="#{userView.users}" selection="#{userView.selectedUsers}" rowKey="#{user.id}">
-            <f:facet name="header">Benutzer</f:facet>
+                <f:facet name="header"><h:outputText value="Benutzer"/></f:facet>
             <p:ajax event="rowSelect" update=":formButtons" />
             <p:ajax event="rowUnselect" update=":formButtons" />
             <p:ajax event="rowSelectCheckbox" update=":formButtons" />
             <p:ajax event="rowUnselectCheckbox" update=":formButtons" />
+            
             <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
             <p:column headerText="name" sortBy="#{user.name}"><h:outputText value="#{user.name}"/></p:column>
             <p:column headerText="email" sortBy="#{user.email}"><h:outputText value="#{user.email}"/></p:column>
