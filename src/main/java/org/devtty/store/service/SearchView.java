@@ -29,36 +29,23 @@ public class SearchView implements Serializable{
     @Inject
     private Logger logger;
 
-    private List<String> terms;
-
-    private String term;
+    private SearchResult term;
     
-    
-    public List<String> getTerms() {
-        return terms;
-    }
-
-    public void setTerms(List<String> terms) {
-        this.terms = terms;
-    }
-
-    public String getTerm() {
+    public SearchResult getTerm() {
         return term;
     }
 
-    public void setTerm(String term) {
+    public void setTerm(SearchResult term) {
         this.term = term;
     }
     
-    
     @PostConstruct
     public void init(){
-        terms = new ArrayList<>();
     }
     
     @Transactional(readOnly = true)
-    public List<String> complete(String query){
-        List<String> s = new ArrayList<>();
+    public List<SearchResult> complete(String query){
+        List<SearchResult> s = new ArrayList<>();
       
         logger.debug("SEARCH LUCENE " + query);
         
@@ -74,7 +61,7 @@ public class SearchView implements Serializable{
         logger.debug("result: " + result.size());
         
         for(Object u : result){
-            s.add(u.toString());
+            s.add(new SearchResult((Client) u));
         }
         
         return s;

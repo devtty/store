@@ -16,9 +16,18 @@
     <cc:implementation>
         <p:autoComplete 
             value="#{cc.attrs.value.term}" 
-            itemLabel="#{cc.attrs.value.terms}" 
-            itemValue="#{cc.attrs.value.terms}" 
+            var="searchResultItem"
+            itemLabel="#{searchResultItem.label}" 
+            itemValue="#{searchResultItem}" 
             completeMethod="#{cc.attrs.value.complete}" 
-        />
+            converter="searchResultConverter"
+            minQueryLength="3">
+            <p:column>
+                <h:outputText value="#{searchResultItem.label}" />
+            </p:column>
+            <p:column>
+                <h:outputText value="#{searchResultItem.type}" />
+            </p:column>
+        </p:autoComplete>
     </cc:implementation>
 </html>
