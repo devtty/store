@@ -10,9 +10,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.apache.solr.analysis.EdgeNGramFilterFactory;
+
+import org.apache.solr.analysis.LowerCaseFilterFactory;
+import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Parameter;
+import org.hibernate.search.annotations.TokenFilterDef;
+import org.hibernate.search.annotations.TokenizerDef;
 
 /**
  *
@@ -21,26 +30,36 @@ import org.hibernate.search.annotations.Indexed;
 @Entity
 @Table(name = "ST_CLIENT")
 @Indexed
+@AnalyzerDef(name = "myanalyzer",
+        tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+        filters = {
+            @TokenFilterDef(factory = LowerCaseFilterFactory.class),
+            @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
+                @Parameter(name = "maxGramSize", value = "10"),
+                @Parameter(name = "minGramSize", value = "3"),
+                @Parameter(name = "side", value = "front")}),})
+@Analyzer(definition = "myanalyzer")
 public class Client implements Serializable {
+
     @OneToMany(mappedBy = "client")
     private List<Item> items;
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="ST_SQ_CLIENT")
-    @SequenceGenerator(name="ST_SQ_CLIENT", sequenceName="ST_SQ_CLIENT")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ST_SQ_CLIENT")
+    @SequenceGenerator(name = "ST_SQ_CLIENT", sequenceName = "ST_SQ_CLIENT")
     @DocumentId
     private Long id;
 
     @NotNull
-    @Field
+    @Field(index = org.hibernate.search.annotations.Index.YES, store = org.hibernate.search.annotations.Store.YES)
     private String name;
-    
+
     private String address;
-    
+
     public Long getId() {
-        return id; 
+        return id;
     }
 
     public void setId(Long id) {
@@ -50,19 +69,19 @@ public class Client implements Serializable {
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
-    
-    public String getAddress(){
+
+    public String getAddress() {
         return address;
     }
-    
+
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -87,5 +106,5 @@ public class Client implements Serializable {
     public String toString() {
         return "org.devtty.store.entity.Client[ id=" + id + " ]";
     }
-    
+
 }

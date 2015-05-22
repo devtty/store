@@ -1,0 +1,82 @@
+package org.devtty.store.service;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.persistence.EntityManager;
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
+import org.apache.lucene.search.Query;
+import org.devtty.store.entity.Client;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.Search;
+import org.hibernate.search.query.dsl.QueryBuilder;
+import org.slf4j.Logger;
+
+
+/**
+ *
+ * @author Denis Renning <denis at devtty.de>
+ */
+@Named
+public class SearchView implements Serializable{
+
+    @Inject
+    private EntityManager entityManager;
+    
+    @Inject
+    private Logger logger;
+
+    private List<String> terms;
+
+    private String term;
+    
+    
+    public List<String> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(List<String> terms) {
+        this.terms = terms;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+    
+    
+    @PostConstruct
+    public void init(){
+        terms = new ArrayList<>();
+    }
+    
+    @Transactional(readOnly = true)
+    public List<String> complete(String query){
+        List<String> s = new ArrayList<>();
+      
+        logger.debug("SEARCH LUCENE " + query);
+        
+        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+        QueryBuilder builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Client.class).get();
+        
+        Query q = builder.keyword().onField("name").matching(query).createQuery();
+        
+        javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(q);
+        
+        List result = jpaQuery.getResultList();
+        
+        logger.debug("result: " + result.size());
+        
+        for(Object u : result){
+            s.add(u.toString());
+        }
+        
+        return s;
+    }
+}
