@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 import org.apache.lucene.search.Query;
 import org.devtty.store.entity.Client;
+import org.devtty.store.entity.Item;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
@@ -50,19 +51,26 @@ public class SearchView implements Serializable{
         logger.debug("SEARCH LUCENE " + query);
         
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+        
         QueryBuilder builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Client.class).get();
         
         Query q = builder.keyword().onField("name").matching(query).createQuery();
-        
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(q);
-        
         List result = jpaQuery.getResultList();
-        
         logger.debug("result: " + result.size());
         
         for(Object u : result){
             s.add(new SearchResult((Client) u));
         }
+        
+        /*builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Item.class).get();
+        q = builder.keyword().onField("name").matching(query).createQuery();
+        jpaQuery = fullTextEntityManager.createFullTextQuery(q);
+        result = jpaQuery.getResultList();
+        for(Object i : result){
+            s.add(new SearchResult((Item) i));
+        }
+        */
         
         return s;
     }

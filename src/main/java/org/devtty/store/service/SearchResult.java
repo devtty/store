@@ -1,6 +1,7 @@
 package org.devtty.store.service;
 
 import org.devtty.store.entity.Client;
+import org.devtty.store.entity.Item;
 
 /**
  *
@@ -16,6 +17,12 @@ public class SearchResult {
         this.label = client.getName();
         this.value = client;
         this.type = "Client";
+    }
+    
+    public SearchResult(Item item) {
+        this.label = item.getName();
+        this.value = item;
+        this.type = "Item";
     }
 
     public String getLabel() {

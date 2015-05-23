@@ -24,7 +24,7 @@ public class SearchResultConverter implements Converter{
         if(o != null){
             if(o instanceof Client){
                 return ((Client) o).getName();
-            }
+            } 
         }
         return null;
     }
