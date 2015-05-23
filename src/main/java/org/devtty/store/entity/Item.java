@@ -11,9 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.apache.solr.analysis.EdgeNGramFilterFactory;
+import org.apache.solr.analysis.LowerCaseFilterFactory;
+import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Parameter;
+import org.hibernate.search.annotations.TokenFilterDef;
+import org.hibernate.search.annotations.TokenizerDef;
 
 /**
  *
@@ -22,6 +30,14 @@ import org.hibernate.search.annotations.Indexed;
 @Entity
 @Table(name = "ST_ITEM")
 @Indexed
+@AnalyzerDef(name = "itemanalyzer",
+        tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+        filters = {
+            @TokenFilterDef(factory = LowerCaseFilterFactory.class),
+            @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
+                @Parameter(name = "maxGramSize", value = "8"),
+                @Parameter(name = "minGramSize", value = "3"),
+                @Parameter(name = "side", value = "front")}),})
 public class Item implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -38,6 +54,7 @@ public class Item implements Serializable {
     private String startcorporation;
     
     @Field
+    @Analyzer(definition = "itemanalyzer")
     private String name;
     private String inMProblem;
     private String docs;

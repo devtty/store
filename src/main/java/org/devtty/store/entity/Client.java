@@ -35,7 +35,7 @@ import org.hibernate.search.annotations.TokenizerDef;
         filters = {
             @TokenFilterDef(factory = LowerCaseFilterFactory.class),
             @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
-                @Parameter(name = "maxGramSize", value = "10"),
+                @Parameter(name = "maxGramSize", value = "8"),
                 @Parameter(name = "minGramSize", value = "3"),
                 @Parameter(name = "side", value = "front")}),})
 @Analyzer(definition = "clientanalyzer")
