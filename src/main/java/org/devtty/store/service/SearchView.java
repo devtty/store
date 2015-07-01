@@ -8,9 +8,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.WildcardQuery;
 import org.devtty.store.entity.Client;
 import org.devtty.store.entity.Item;
+import org.devtty.store.entity.User;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
@@ -55,7 +58,8 @@ public class SearchView implements Serializable{
         QueryBuilder builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Client.class).get();
         
         Query q = builder.keyword().onField("name").matching(query).createQuery();
-        javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(q);
+        javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(q, Client.class);
+        
         List result = jpaQuery.getResultList();
         logger.debug("result: " + result.size());
         
@@ -63,14 +67,22 @@ public class SearchView implements Serializable{
             s.add(new SearchResult((Client) u));
         }
         
-        /*builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Item.class).get();
+        builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
         q = builder.keyword().onField("name").matching(query).createQuery();
-        jpaQuery = fullTextEntityManager.createFullTextQuery(q);
+        jpaQuery = fullTextEntityManager.createFullTextQuery(q, User.class);
+        result = jpaQuery.getResultList();
+        
+        for(Object u : result){
+            s.add(new SearchResult((User) u));
+        }
+        
+        builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Item.class).get();
+        q = builder.keyword().onField("name").matching(query).createQuery();
+        jpaQuery = fullTextEntityManager.createFullTextQuery(q, Item.class);
         result = jpaQuery.getResultList();
         for(Object i : result){
             s.add(new SearchResult((Item) i));
         }
-        */
         
         return s;
     }

@@ -2,6 +2,7 @@ package org.devtty.store.service;
 
 import org.devtty.store.entity.Client;
 import org.devtty.store.entity.Item;
+import org.devtty.store.entity.User;
 
 /**
  *
@@ -23,6 +24,12 @@ public class SearchResult {
         this.label = item.getName();
         this.value = item;
         this.type = "Item";
+    }
+    
+    public SearchResult(User user) {
+        this.label = user.getName();
+        this.value = user;
+        this.type = "User";
     }
 
     public String getLabel() {

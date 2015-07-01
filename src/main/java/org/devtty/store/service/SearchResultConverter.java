@@ -5,6 +5,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import org.devtty.store.entity.Client;
+import org.devtty.store.entity.Item;
+import org.devtty.store.entity.User;
 
 
 /**
@@ -24,7 +26,12 @@ public class SearchResultConverter implements Converter{
         if(o != null){
             if(o instanceof Client){
                 return ((Client) o).getName();
-            } 
+            } else if(o instanceof User){
+                return ((User) o).getName();
+            } else if (o instanceof Item){
+                return ((Item) o).getName();
+            }
+           
         }
         return null;
     }

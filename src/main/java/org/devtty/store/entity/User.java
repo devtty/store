@@ -10,6 +10,17 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.apache.solr.analysis.EdgeNGramFilterFactory;
+import org.apache.solr.analysis.LowerCaseFilterFactory;
+import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.AnalyzerDef;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Parameter;
+import org.hibernate.search.annotations.TokenFilterDef;
+import org.hibernate.search.annotations.TokenizerDef;
 
 /**
  *
@@ -18,6 +29,16 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "ST_USER", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Indexed
+@AnalyzerDef(name = "useranalyzer",
+        tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+        filters = {
+            @TokenFilterDef(factory = LowerCaseFilterFactory.class),
+            @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
+                @Parameter(name = "maxGramSize", value = "8"),
+                @Parameter(name = "minGramSize", value = "3"),
+                @Parameter(name = "side", value = "front")}),})
+@Analyzer(definition = "useranalyzer")
 //@IdentityEntity(EntityType.IDENTITY_OBJECT)
 public class User implements Serializable {
     
@@ -26,10 +47,12 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ST_SQ_USER")
     @SequenceGenerator(name="ST_SQ_USER", sequenceName="ST_SQ_USER")
+    @DocumentId
     private Long id;
 
     @NotNull
     @Size(min = 5, max=60)
+    @Field
     private String name;
     
     @NotNull
