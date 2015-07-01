@@ -1,0 +1,27 @@
+@startuml
+
+title Entities - Class Diagram
+
+class Client{
+
+}
+enum CollectionStatus
+
+class Consolidation{
+ ConsolidationStatus status
+}
+
+enum ConsolidationStatus{
+ EDIT
+ ORDER
+ STORNO
+ CONNECT
+ INVOICE
+}
+
+class Item{
+  .. Fields ..
+Long id
+}
+
+@enduml
