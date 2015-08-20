@@ -10,6 +10,10 @@ import org.devtty.store.entity.User;
  */
 public class SearchResult {
 
+    public static final String SR_CLIENT = "Client";
+    public static final String SR_ITEM = "Item";
+    public static final String SR_USER = "User";
+    
     private String label;
     private Object value;
     private String type;
@@ -17,21 +21,21 @@ public class SearchResult {
     public SearchResult(Client client) {
         this.label = client.getName();
         this.value = client;
-        this.type = "Client";
+        this.type = SR_CLIENT;
     }
     
     public SearchResult(Item item) {
         this.label = item.getName();
         this.value = item;
-        this.type = "Item";
+        this.type = SR_ITEM;
     }
     
     public SearchResult(User user) {
         this.label = user.getName();
         this.value = user;
-        this.type = "User";
+        this.type = SR_USER;
     }
-
+    
     public String getLabel() {
         return label;
     }
