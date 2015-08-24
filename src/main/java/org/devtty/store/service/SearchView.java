@@ -1,22 +1,23 @@
 package org.devtty.store.service;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
-import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.WildcardQuery;
 import org.devtty.store.entity.Client;
 import org.devtty.store.entity.Item;
 import org.devtty.store.entity.User;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
+import org.primefaces.event.SelectEvent;
 import org.slf4j.Logger;
 
 
@@ -29,6 +30,12 @@ public class SearchView implements Serializable{
 
     @Inject
     private EntityManager entityManager;
+    
+    @Inject
+    private FacesContext facesContext;
+    
+    @Inject
+    private UserView userView;
     
     @Inject
     private Logger logger;
@@ -85,5 +92,24 @@ public class SearchView implements Serializable{
         }
         
         return s;
+    }
+    
+    public void onItemSelect(SelectEvent event){
+        SearchResult result = (SearchResult) event.getObject();
+        
+        switch(result.getType()){
+            
+            case SearchResult.SR_USER :  {
+            try {
+                userView.setUser((User) result.getValue());
+                // TODO remove hardcoded ctx
+                facesContext.getExternalContext().redirect("/store/users/edit.jsf");
+            } catch (IOException ex) {
+                logger.error(ex.getMessage());
+            }
+        }
+                
+        }
+        
     }
 }

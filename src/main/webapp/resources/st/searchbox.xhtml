@@ -28,6 +28,7 @@
             <p:column>
                 <h:outputText value="#{searchResultItem.type}" />
             </p:column>
+            <p:ajax event="itemSelect" listener="#{cc.attrs.value.onItemSelect}"/>
         </p:autoComplete>
     </cc:implementation>
 </html>
