@@ -46,9 +46,9 @@
                 <ds:disableClientWindow>
                     <p:menu id="navigation">
                         <p:menuitem value="#{msg['nav.users']}" url="/users/index.jsf" rendered="#{request.isUserInRole('Admin')}" />
-                        <p:menuitem value="#{msg['nav.clients']}" url="/users/index.jsf" />
-                        <p:menuitem value="#{msg['nav.collections']}" url="/users/index.jsf" />
-                        <p:menuitem value="#{msg['nav.items']}" url="/users/index.jsf" />
+                        <p:menuitem value="#{msg['nav.clients']}" url="/clients/index.jsf" rendered="#{request.isUserInRole('Admin')}" />
+                        <p:menuitem value="#{msg['nav.collections']}" url="/collections/index.jsf" />
+                        <p:menuitem value="#{msg['nav.items']}" url="/items/index.jsf" />
                         <p:menuitem value="#{msg['nav.config']}" url="/config/index.jsf" rendered="#{request.isUserInRole('Admin')}" />
                     </p:menu>
                 </ds:disableClientWindow>
