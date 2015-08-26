@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="value" type="org.devtty.store.service.ItemView" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <p:dataTable id="itemTable" var="item" value="#{cc.attrs.value.items}" selection="#{cc.attrs.value.selectedItems}" rowKey="#{item.id}"
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}" paginator="true" rows="25">
+            <f:facet name="header"><h:outputText value="#{cc.resourceBundleMap.items}"/></f:facet>
+            <f:facet name="{Exporters}">
+                <h:commandLink>
+                    <p:graphicImage library="images" name="excel.png" width="24" />
+                    <p:dataExporter type="xls" target="itemTable" fileName="items" />
+                </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage library="images" name="pdf.png" width="24"/>
+                    <p:dataExporter type="pdf" target="itemTable" fileName="items" />
+                </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage library="images" name="csv.png" width="24"/>
+                    <p:dataExporter type="csv" target="itemTable" fileName="items" />
+                </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage library="images" name="xml.png" width="24"/>
+                    <p:dataExporter type="xml" target="itemTable" fileName="items" />
+                </h:commandLink>
+            </f:facet>
+            <p:ajax event="rowSelect" update="@form" />
+            <p:ajax event="rowUnselect" update="@form" />
+            <p:ajax event="rowSelectCheckbox" update="@form" />
+            <p:ajax event="rowUnselectCheckbox" update="@form" />
+
+            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+            <p:column headerText="#{cc.resourceBundleMap.indate}" sortBy="#{item.indate}"><h:outputText value="#{item.indate}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.name}" sortBy="#{item.name}"><h:outputText value="#{item.name}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.store}" sortBy="#{item.store}"><h:outputText value="#{item.store}"/></p:column>
+        </p:dataTable>
+    </cc:implementation>
+</html>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="value" type="org.devtty.store.service.ItemView" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form>
+            <p:panel id="panel" header="#{cc.resourceBundleMap.header}">
+                <h:panelGrid columns="3">
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.name}" for="name" />
+                    <p:inputText id="name" value="#{cc.attrs.value.item.name}">
+                        <f:validateLength minimum="5" maximum="60"/>
+                    </p:inputText>
+                    <p:message for="name" style="color: red"/>
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.store}" for="store" />
+                    <p:selectOneMenu id="store" value="#{cc.attrs.value.item.store}">
+                        <f:selectItems 
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.startlocation}" for="address" />
+                    <p:inputText id="address" value="#{cc.attrs.value.item.startlocation}">
+                        <f:validateBean />
+                    </p:inputText>
+                    <p:message for="address" style="color: red"/>
+                    
+                    
+                </h:panelGrid>
+            
+                <p:commandButton id="submitButton" update="@form" value="#{msg['submit']}" action="#{cc.attrs.value.save()}" />
+            </p:panel>
+        </h:form>
+    </cc:implementation>
+</html>

@@ -22,4 +22,10 @@ public class CustomAuthorizer {
         return facesContext.getExternalContext().isUserInRole("Admin");
     }
     
+    @Secures
+    @Supervisor
+    public boolean doSecuredAsSupervisorCheck(InvocationContext invocationContext, BeanManager manager) throws Exception{
+        return facesContext.getExternalContext().isUserInRole("Supervisor");
+    }
+    
 }

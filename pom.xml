@@ -45,6 +45,7 @@
         <version.wildfly>8.2.0.Final</version.wildfly>
         <version.deltaspike>1.3.0</version.deltaspike>
         <version.activiti>5.17.0</version.activiti>
+        <version.rewrite>2.0.12.Final</version.rewrite>
     </properties>
     
     <dependencies>
@@ -207,6 +208,18 @@
             <scope>runtime</scope>
         </dependency>
         
+        <!--<dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-servlet</artifactId>
+            <version>${version.rewrite}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-integration-cdi</artifactId>
+            <version>${version.rewrite}</version>
+        </dependency>-->
+        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-search-orm</artifactId>
@@ -323,12 +336,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
                 <configuration>
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
             </plugin>
             
-            <!--PlantUml-->
+            <!--PlantUml--><!--
             <plugin>
                 <groupId>com.github.jeluard</groupId>
                 <artifactId>maven-plantuml-plugin</artifactId>
@@ -379,7 +393,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
     
@@ -482,10 +496,16 @@
     
     <profiles>
         <profile>
-            <id>wildfly-managed-arquillian</id>
+            <id>local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+        </profile>
+        <profile>
+            <id>wildfly-managed-arquillian</id>
+            <!--<activation>
+                <activeByDefault>true</activeByDefault>
+            </activation> -->
             <properties>
                 <serverProfile>standalone.xml</serverProfile>
                 <serverRoot>${project.build.directory}/wildfly-${version.wildfly}</serverRoot>
