@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 import org.apache.solr.analysis.EdgeNGramFilterFactory;
 import org.apache.solr.analysis.LowerCaseFilterFactory;
 import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.devtty.store.util.validation.Email;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.DocumentId;
@@ -58,11 +59,15 @@ public class User implements Serializable {
     @NotNull
     @Size(min = 5, max=16)
     private String login;
+    
+    @NotNull
+    @Size(min = 8, max=16)
     private String pass;
     
     @NotNull
-    @Size(min = 5, max=16)
+    @Email
     private String email;
+    
     private String role;
     
     private boolean accounting;
