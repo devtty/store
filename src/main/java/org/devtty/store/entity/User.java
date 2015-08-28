@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -72,6 +73,12 @@ public class User implements Serializable {
     
     private boolean accounting;
     
+    @ManyToOne
+    private Store store;
+    
+    @ManyToOne
+    private Client client;
+    
     public Long getId() {
         return id;
     }
@@ -119,8 +126,31 @@ public class User implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
-    
 
+    public boolean isAccounting() {
+        return accounting;
+    }
+
+    public void setAccounting(boolean accounting) {
+        this.accounting = accounting;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
