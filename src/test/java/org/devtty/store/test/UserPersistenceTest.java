@@ -70,8 +70,9 @@ public class UserPersistenceTest {
 	for(String login : USER_LOGINS){
 	    User user = new User();
 	    user.setLogin(login);
-            user.setName(login + "pass");
+            user.setName(login + "login");
             user.setEmail(login + "@devtty.de");
+            user.setPass(login + "pass");
 	    em.persist(user);
 	}
 	
