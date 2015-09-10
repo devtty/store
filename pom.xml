@@ -333,16 +333,16 @@
             </plugin>
             
             <!--switch of doclint (to restrictive)-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9.1</version>
                 <configuration>
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
-            </plugin>
+            </plugin>-->
             
-            <!--PlantUml--><!--
+            <!--PlantUml-->
             <plugin>
                 <groupId>com.github.jeluard</groupId>
                 <artifactId>maven-plantuml-plugin</artifactId>
@@ -373,7 +373,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <outputDirectory>${basedir}/target/site/apidocs/img</outputDirectory>
+                            <outputDirectory>${basedir}/target/site/apidocs</outputDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -383,7 +383,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <outputDirectory>${basedir}/target/site/apidocs/img</outputDirectory>
+                            <outputDirectory>${basedir}/target/site/apidocs/resources</outputDirectory>
                             <sourceFiles>
                                 <directory>${basedir}/src/main/site/puml</directory>
                                 <includes>
@@ -393,7 +393,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
     
