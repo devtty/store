@@ -26,14 +26,22 @@
                     
                     <p:outputLabel value="#{cc.resourceBundleMap.store}" for="store" />
                     <p:selectOneMenu id="store" value="#{cc.attrs.value.item.store}">
-                        <f:selectItems 
+                       <!-- TODO insert stores accessible by actual user here -->
                     </p:selectOneMenu>
+                    <p:message for="store" style="color: red"/>
                     
-                    <p:outputLabel value="#{cc.resourceBundleMap.startlocation}" for="address" />
-                    <p:inputText id="address" value="#{cc.attrs.value.item.startlocation}">
+                    <p:outputLabel value="#{cc.resourceBundleMap.startlocation}" for="startlocation" />
+                    <p:inputText id="startlocation" value="#{cc.attrs.value.item.startlocation}">
                         <f:validateBean />
                     </p:inputText>
-                    <p:message for="address" style="color: red"/>
+                    <p:message for="startlocation" style="color: red"/>
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.startcorporation}" for="startcorporation" />
+                    <p:inputText id="startcorporation" value="#{cc.attrs.value.item.startcorporation}">
+                        <f:validateBean />
+                    </p:inputText>
+                    <p:message for="startcorporation" style="color: red"/>
+                    
                     
                     
                 </h:panelGrid>
