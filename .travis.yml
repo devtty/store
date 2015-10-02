@@ -13,6 +13,6 @@ deploy:
   password:
     secure: MCL+EL0nrkfQN46KhKAOUsn+G0fIvwyRzlnJGUpWEROmvgL2QLilLG9N91hdJS+j59togHc8HpAvlCOIxfXKFwsDBLBQ1+9rDPh1iEvVchEixh/7kQG0aO/S6CXCZgl8DjmW8+JtWS/zXlLpBykoWKb5sKcp3D9HvtCXrSW43gA=
   app: store
-  domain: store-devtty.rhcloud.com
+  domain: devtty
   on:
     repo: devtty/store
