@@ -18,17 +18,51 @@
             <p:panel id="panel" header="#{cc.resourceBundleMap.header}">
                 <h:panelGrid columns="3">
                     
+                    <p:outputLabel value="#{cc.resourceBundleMap.store}" for="store" />
+                    <p:selectOneMenu id="store" value="#{cc.attrs.value.item.store}">
+                       <!-- TODO insert stores accessible by actual user here -->
+                    </p:selectOneMenu>
+                    <p:message for="store" style="color: red"/>
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.client}" for="client" />
+                    <h:outputText id="client" value="#{cc.attrs.value.item.client.name}" />
+                    <p:message for="client" style="color: red"/>
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.clientRef}" for="clientRef" />
+                    <p:inputText id="clientRef" value="#{cc.attrs.value.item.clientRef}" />
+                    <p:message for="clientRef" style="color: red"/>
+                    
                     <p:outputLabel value="#{cc.resourceBundleMap.name}" for="name" />
                     <p:inputText id="name" value="#{cc.attrs.value.item.name}">
                         <f:validateLength minimum="5" maximum="60"/>
                     </p:inputText>
                     <p:message for="name" style="color: red"/>
                     
-                    <p:outputLabel value="#{cc.resourceBundleMap.store}" for="store" />
-                    <p:selectOneMenu id="store" value="#{cc.attrs.value.item.store}">
-                       <!-- TODO insert stores accessible by actual user here -->
+                    <p:outputLabel value="#{cc.resourceBundleMap.indate}" for="indate"/>
+                    <p:calendar id="indate" value="#{cc.attrs.value.item.indate}" showOn="button"/>
+                    <p:message for="indate" style="color: red"/>
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.kolli}" for="kolli" />
+                    <p:spinner id="kolli" value="#{cc.attrs.value.item.kolli}" min="0" />
+                    <p:message for="kolli" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.palette}" for="palette" />
+                    <p:spinner id="palette" value="#{cc.attrs.value.item.paletten}" min="0" />
+                    <p:message for="palette" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.status}" for="status" />
+                    <p:selectOneMenu id="status" value="#{cc.attrs.value.item.status}">
+                        <!-- todo insert status items here -->
                     </p:selectOneMenu>
-                    <p:message for="store" style="color: red"/>
+                    <p:message for="status" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.consolidation}" for="consolidation"/>
+                    <h:outputText id="consolidation" value="#{cc.attrs.value.item.consolidate}"/>
+                    <p:message for="consolidation" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.vehicle}" for="vehicle" />
+                    <p:inputText id="vehicle" value="#{cc.attrs.value.item.vehicleNo}" />
+                    <p:message for="vehicle" style="color: red" />
                     
                     <p:outputLabel value="#{cc.resourceBundleMap.startlocation}" for="startlocation" />
                     <p:inputText id="startlocation" value="#{cc.attrs.value.item.startlocation}">
@@ -42,7 +76,62 @@
                     </p:inputText>
                     <p:message for="startcorporation" style="color: red"/>
                     
+                    <p:outputLabel value="#{cc.resourceBundleMap.ex}" for="ex"/>
+                    <p:selectBooleanButton id="ex" value="#{cc.attrs.value.item.ex}" onLabel="#{cc.resourceBundleMap.yes}" offLabel="#{cc.resourceBundleMap.no}" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width: 60px;"/>
+                    <p:message for="ex" style="color: red" />
                     
+                    <p:outputLabel value="#{cc.resourceBundleMap.adr}" for="adr"/>
+                    <p:selectBooleanButton id="adr" value="#{cc.attrs.value.item.adr}" onLabel="#{cc.resourceBundleMap.yes}" offLabel="#{cc.resourceBundleMap.no}" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width: 60px;"/>
+                    <p:message for="adr" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.inmok}" for="inmok"/>
+                    <p:selectBooleanButton id="inmok" value="#{cc.attrs.value.item.inMOk}" onLabel="#{cc.resourceBundleMap.yes}" offLabel="#{cc.resourceBundleMap.no}" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width: 60px;"/>
+                    <p:message for="inmok" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.inMProblem}" for="inMProblem"/>
+                    <p:inputTextarea id="inMProblem" value="#{cc.attrs.value.item.inMProblem}" />
+                    <p:message for="inMProblem" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.inW}" for="inW"/>
+                    <p:inputText id="inW" value="#{cc.attrs.value.item.inW}" />
+                    <p:message for="inW" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.inWOk}" for="inWOk"/>
+                    <p:selectBooleanButton id="inWOk" value="#{cc.attrs.value.item.inWOk}" onLabel="#{cc.resourceBundleMap.yes}" offLabel="#{cc.resourceBundleMap.no}" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width: 60px;"/>
+                    <p:message for="inWOk" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.currentWeight}" for="currentWeight"/>
+                    <p:inputText id="currentWeight" value="#{cc.attrs.value.item.currentWeight}" />
+                    <p:message for="currentWeight" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.currentWeightOk}" for="currentWeightOk"/>
+                    <p:selectBooleanButton id="currentWeightOk" value="#{cc.attrs.value.item.currentWeightOk}" onLabel="#{cc.resourceBundleMap.yes}" offLabel="#{cc.resourceBundleMap.no}" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width: 60px;"/>
+                    <p:message for="currentWeightOk" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.inV}" for="inV"/>
+                    <p:inputText id="inV" value="#{cc.attrs.value.item.inV}" />
+                    <p:message for="inV" style="color: red"/>
+                    
+                    <!-- TODO StlPl prop in legacy ? -->
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.docs}" for="docs"/>
+                    <p:inputText id="docs" value="#{cc.attrs.value.item.docs}" />
+                    <p:message for="docs" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.bvdInfo}" for="bvdInfo" />
+                    <p:inputText id="bvdInfo" value="#{cc.attrs.value.item.bvdInfo}" />
+                    <p:message for="bvdInfo" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.t1}" for="t1"/>
+                    <p:selectBooleanButton id="t1" value="#{cc.attrs.value.item.t1}" onLabel="#{cc.resourceBundleMap.yes}" offLabel="#{cc.resourceBundleMap.no}" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width: 60px;"/>
+                    <p:message for="t1" style="color: red" />
+                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.customsIn}" for="customsIn"/>
+                    <p:calendar id="customsIn" value="#{cc.attrs.value.item.customsIn}" showOn="button"/>
+                    <p:message for="customsIn" style="color: red" />
+                    
+                    <!-- TODO Out prop in legacy -->
+                    <!-- TODO Fileref in legacy -->
                     
                 </h:panelGrid>
             
