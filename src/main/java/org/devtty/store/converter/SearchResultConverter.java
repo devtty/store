@@ -1,4 +1,4 @@
-package org.devtty.store.service;
+package org.devtty.store.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.devtty.store.entity.Client;
 import org.devtty.store.entity.Item;
 import org.devtty.store.entity.User;
+import org.devtty.store.service.SearchResult;
+import org.devtty.store.service.UserRepository;
 import org.slf4j.Logger;
 
 
