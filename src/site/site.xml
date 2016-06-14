@@ -9,6 +9,11 @@
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
     </skin>    
+    <bannerLeft>
+        <name>Store</name>
+        <src>images/logo.png</src>
+        <href>http://devtty.de</href>
+    </bannerLeft>
     <body>
          <menu name="Overview">
              <item name="Introduction" href="index.html" />
