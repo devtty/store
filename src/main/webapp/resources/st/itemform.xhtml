@@ -21,6 +21,7 @@
                     <p:outputLabel value="#{cc.resourceBundleMap.store}" for="store" />
                     <p:selectOneMenu id="store" value="#{cc.attrs.value.item.store}">
                        <!-- TODO insert stores accessible by actual user here -->
+                       <f:selectItems value="#{storeList}" var="store" itemLabel="#{store.name}"  />
                     </p:selectOneMenu>
                     <p:message for="store" style="color: red"/>
                     
