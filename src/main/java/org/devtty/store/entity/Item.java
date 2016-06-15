@@ -1,12 +1,8 @@
 package org.devtty.store.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -16,7 +12,6 @@ import org.apache.solr.analysis.LowerCaseFilterFactory;
 import org.apache.solr.analysis.StandardTokenizerFactory;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
-import org.hibernate.search.annotations.DocumentId;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.Parameter;
@@ -29,6 +24,7 @@ import org.hibernate.search.annotations.TokenizerDef;
  */
 @Entity
 @Table(name = "ST_ITEM")
+@SequenceGenerator(name = "SQ_GEN", sequenceName = "ST_SQ_ITEM")
 @Indexed
 @AnalyzerDef(name = "itemanalyzer",
         tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
@@ -38,16 +34,8 @@ import org.hibernate.search.annotations.TokenizerDef;
                 @Parameter(name = "maxGramSize", value = "8"),
                 @Parameter(name = "minGramSize", value = "3"),
                 @Parameter(name = "side", value = "front")}),})
-public class Item implements Serializable {
+public class Item extends AbstractPersistable{
     
-    private static final long serialVersionUID = 1L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ST_SQ_ITEM")
-    @SequenceGenerator(name="ST_SQ_ITEM", sequenceName="ST_SQ_ITEM")
-    @DocumentId
-    private Long id;
-
     private String clientRef;
     private String consolidate;
     private String startlocation;
@@ -105,14 +93,6 @@ public class Item implements Serializable {
     @ManyToOne
     private User lastChangeBy;
             
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getClientRef() {
         return clientRef;
     }
@@ -369,30 +349,4 @@ public class Item implements Serializable {
         this.client = client;
     }
 
-     
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Item)) {
-            return false;
-        }
-        Item other = (Item) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "org.devtty.store.entity.Item[ id=" + id + " ]";
-    }
-    
 }
