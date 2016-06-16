@@ -1,12 +1,10 @@
 language: java
 jdk:
-- openjdk7
-- oraclejdk7
 - oraclejdk8
 sudo: false
 cache:
   directories: -'$HOME/.m2/repository'
-script: mvn clean install -Pwildfly-managed-arquillian
+script: mvn clean install site:deploy -Pwildfly-managed-arquillian
 deploy:
   provider: openshift
   user: denis@devtty.de
@@ -16,3 +14,7 @@ deploy:
   domain: devtty
   on:
     repo: devtty/store
+env:
+  global:
+  - secure: Rz473qF1TXwvIR0eQjxXYhU7EQ2q9IwWUdT2fbPGlC2lVz4clGz9G/tuq+M/jPVTrp8+nCcVkLkgIbnkaBAN4+Vw50Q5+Zbmfl7wgd3+BLga7P99y1d22vGDQ44fBk6keSN7GZGxXdMu863Hz9Xe3+eOmXXcMFdNLOt9RqOtQeo=
+  - secure: A4jIukyHDS8jGtE+xikQtGOQAikRhvRLc+bMVPrSus7pUYW2Mmf4ahGtHvXLqosn7wIocYr/z/dpgipk+BsBBOB7S5tr98JWNEWNZJX1US9zYMNimtw+nO/VyTuGFLtQs2ekg6odz2R/zqvPgIDvWvVHIiCaBULSh1PxSNE/EhM=
