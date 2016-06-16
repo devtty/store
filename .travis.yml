@@ -4,7 +4,7 @@ jdk:
 sudo: false
 cache:
   directories: -'$HOME/.m2/repository'
-script: mvn clean install site:deploy -Pwildfly-managed-arquillian
+script: mvn clean install -Pwildfly-managed-arquillian
 deploy:
   provider: openshift
   user: denis@devtty.de
