@@ -14,7 +14,4 @@ deploy:
   domain: devtty
   on:
     repo: devtty/store
-env:
-  global:
-  - secure: cE9ktJSF72Zy2S2dYOlgC/ywtvhlmSovTGUHRcltwKra+S6jJdCYwJekXmHj3XJpB1memoCsqmNOaU9P/tM245FT10hN+6VaWLtOBRe24T7qTa5AxZb3uf9PUJLtKsm3oyS5dY1jHeIIUoSTI27L59WNMRNVBkAqli5df6Mr6o0=
-  - secure: XSiLSHPtjAkcOUseamJ60WeRrHL+hf0M6IXAN8UuJ0S2eP1XNcZIGXCDtorT5IeQF/b0O5TslFPUOYc5N4RJsZZOl4LB/ZcIexI6qgLwn9xwJ4jIOq7gYJOe0V1hZ9mnUYiCjamfhTYsYjtFhGgnuN825MNcMjvBf0s2N+ZKcZA=
+    
