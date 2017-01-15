@@ -46,13 +46,13 @@ public class Startup {
             c = new Config("applicationId", UUID.randomUUID().toString());
             entityManager.persist(c);
         }
-        logger.info("New ApplicationID is: " + c.getValue());
+        logger.info("New ApplicationID is: %s", c.getValue());
         
         
         //count application starts
         c = entityManager.find(Config.class, "applicationStart");
         
-        logger.info("C: " + c);
+        logger.info("C: %s", c);
         
         int starts = 0;
         
@@ -70,7 +70,7 @@ public class Startup {
         logger.info("A");
         List<Group> groups = identityService.createGroupQuery().list();
         for(Group group : groups){
-            logger.info("Group: " + group.getName() + "(" + group.getType() + ")");
+            logger.info("Group: %s",  group.getName());
         }
         if(identityService.createGroupQuery().groupId("storage").list().size() == 0){
             logger.info("Group storage not found ... created");

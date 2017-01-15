@@ -71,7 +71,7 @@ public class UserView implements Serializable{
 
     public String save(){
         userRepository.save(user);
-        logger.info("saved " + user);
+        logger.info("saved %s", user);
         init();
         return "/users/index";
     }
@@ -88,7 +88,7 @@ public class UserView implements Serializable{
     
     public void deleteUser(){
         for(User u : selectedUsers){
-            logger.info("delete " + u.getLogin());
+            logger.info("delete %s", u.getLogin());
         }
         init();
     }

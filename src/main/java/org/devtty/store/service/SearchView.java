@@ -58,7 +58,7 @@ public class SearchView implements Serializable{
     public List<SearchResult> complete(String query){
         List<SearchResult> s = new ArrayList<>();
       
-        logger.debug("SEARCH LUCENE " + query);
+        logger.debug("SEARCH LUCENE %s", query);
         
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         
@@ -68,7 +68,7 @@ public class SearchView implements Serializable{
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(q, Client.class);
         
         List result = jpaQuery.getResultList();
-        logger.debug("result: " + result.size());
+        logger.debug("result: %s", result.size());
         
         for(Object u : result){
             s.add(new SearchResult((Client) u));
