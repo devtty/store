@@ -7,9 +7,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-import org.apache.solr.analysis.EdgeNGramFilterFactory;
-import org.apache.solr.analysis.LowerCaseFilterFactory;
-import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
+import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
+import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
@@ -32,8 +32,7 @@ import org.hibernate.search.annotations.TokenizerDef;
             @TokenFilterDef(factory = LowerCaseFilterFactory.class),
             @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
                 @Parameter(name = "maxGramSize", value = "8"),
-                @Parameter(name = "minGramSize", value = "3"),
-                @Parameter(name = "side", value = "front")}),})
+                @Parameter(name = "minGramSize", value = "3")}),})
 public class Item extends AbstractPersistable{
     
     private String clientRef;

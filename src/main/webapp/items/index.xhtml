@@ -11,8 +11,8 @@
         <h:form id="formContent">
             <st:itemtable value="#{itemView}"/>
             <p:commandButton id="new" value="#{msg['action.new']}" action="#{itemView.newItem}" />
-            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{itemView.editItem}" disabled="#{itemView.selectedItems.size() != 1}" />
-            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{itemView.deleteItem()}" disabled="#{itemView.selectedItems.size() == 0}">
+            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{itemView.editItem}" disabled="#{itemView.selected.size() != 1}" />
+            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{itemView.deleteItem()}" disabled="#{itemView.selected.size() == 0}">
                 <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
             </p:commandButton>
             

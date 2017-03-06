@@ -9,7 +9,7 @@
 
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="value" type="org.devtty.store.service.ClientView" />
+        <cc:attribute name="value" type="org.devtty.store.view.ClientView" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
@@ -18,12 +18,12 @@
             <p:panel id="panel" header="#{cc.resourceBundleMap.header}">
                 <h:panelGrid columns="3">
                     <p:outputLabel value="#{cc.resourceBundleMap.name}" for="name" />
-                    <p:inputText id="name" value="#{cc.attrs.value.client.name}">
+                    <p:inputText id="name" value="#{cc.attrs.value.detail.name}">
                         <f:validateLength minimum="5" maximum="60"/>
                     </p:inputText>
                     <p:message for="name" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.address}" for="address" />
-                    <p:inputText id="address" value="#{cc.attrs.value.client.address}">
+                    <p:inputText id="address" value="#{cc.attrs.value.detail.address}">
                         <f:validateBean />
                     </p:inputText>
                     <p:message for="address" style="color: red"/>

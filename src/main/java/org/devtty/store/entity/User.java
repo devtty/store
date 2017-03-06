@@ -7,9 +7,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.apache.solr.analysis.EdgeNGramFilterFactory;
-import org.apache.solr.analysis.LowerCaseFilterFactory;
-import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
+import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
+import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
 import org.devtty.store.util.validation.Email;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
@@ -34,8 +34,7 @@ import org.hibernate.search.annotations.TokenizerDef;
             @TokenFilterDef(factory = LowerCaseFilterFactory.class),
             @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
                 @Parameter(name = "maxGramSize", value = "8"),
-                @Parameter(name = "minGramSize", value = "3"),
-                @Parameter(name = "side", value = "front")}),})
+                @Parameter(name = "minGramSize", value = "3")}),})
 @Analyzer(definition = "useranalyzer")
 //@IdentityEntity(EntityType.IDENTITY_OBJECT)
 public class User extends AbstractPersistable{

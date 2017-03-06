@@ -28,7 +28,9 @@
                     </p:inputText>
                     <p:message for="login" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.password}" for="password"/>
-                    <p:password value="#{cc.attrs.value.user.pass}" id="password" required="true" />
+                    <p:password value="#{cc.attrs.value.user.pass}" id="password" required="true">
+                        <f:validateBean />
+                    </p:password>
                     <p:message for="password" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.email}" for="email" />
                     <p:inputText id="email" value="#{cc.attrs.value.user.email}">
