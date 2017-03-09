@@ -7,6 +7,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
 import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
 import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
@@ -35,11 +38,13 @@ import org.hibernate.search.annotations.TokenizerDef;
                 @Parameter(name = "minGramSize", value = "3")}),})
 public class Item extends AbstractPersistable{
     
+    @Size(max = 20)
     private String clientRef;
     private String consolidate;
     private String startlocation;
     private String startcorporation;
     
+    @NotNull
     @Field
     @Analyzer(definition = "itemanalyzer")
     private String name;
@@ -59,6 +64,8 @@ public class Item extends AbstractPersistable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastChange;
     
+    @NotNull
+    @Min(value = 0)
     private Integer kolli;
     private Integer paletten;
     

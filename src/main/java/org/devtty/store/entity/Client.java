@@ -6,6 +6,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
 
 import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
@@ -40,9 +41,11 @@ public class Client extends AbstractPersistable{
     private List<Item> items;
 
     @NotNull
+    @Size(min = 3, max = 255)
     @Field
     private String name;
 
+    @Size(max = 255)
     private String address;
 
     public String getName() {

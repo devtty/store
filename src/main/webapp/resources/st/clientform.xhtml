@@ -18,8 +18,8 @@
             <p:panel id="panel" header="#{cc.resourceBundleMap.header}">
                 <h:panelGrid columns="3">
                     <p:outputLabel value="#{cc.resourceBundleMap.name}" for="name" />
-                    <p:inputText id="name" value="#{cc.attrs.value.detail.name}">
-                        <f:validateLength minimum="5" maximum="60"/>
+                    <p:inputText id="name" value="#{cc.attrs.value.detail.name}" required="true">
+                        <f:validateBean />
                     </p:inputText>
                     <p:message for="name" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.address}" for="address" />

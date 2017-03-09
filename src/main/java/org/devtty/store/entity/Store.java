@@ -6,6 +6,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
@@ -23,9 +24,11 @@ public class Store extends AbstractPersistable{
     private List<Item> items;
 
     @NotNull
+    @Size(min = 3, max = 64)
     @Field
     private String name;
     
+    @Size(max = 250)
     private String address;
 
     public String getName() {

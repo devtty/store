@@ -45,11 +45,11 @@ public class User extends AbstractPersistable{
     private String name;
     
     @NotNull
-    @Size(min = 5, max=16)
+    @Size(min = 6, max=25)
     private String login;
     
     @NotNull
-    @Size(min = 8, max=16)
+    @Size(min = 8, max=32)
     private String pass;
     
     @NotNull

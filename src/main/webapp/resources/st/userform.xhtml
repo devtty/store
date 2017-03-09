@@ -18,12 +18,12 @@
             <p:panel id="panel" header="#{cc.resourceBundleMap.header}">
                 <h:panelGrid columns="3">
                     <p:outputLabel value="#{cc.resourceBundleMap.name}" for="name" />
-                    <p:inputText id="name" value="#{cc.attrs.value.user.name}">
-                        <f:validateLength minimum="5" maximum="60"/>
+                    <p:inputText id="name" value="#{cc.attrs.value.user.name}" required="true">
+                        <f:validateBean/>
                     </p:inputText>
                     <p:message for="name" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.login}" for="login" />
-                    <p:inputText id="login" value="#{cc.attrs.value.user.login}">
+                    <p:inputText id="login" value="#{cc.attrs.value.user.login}" required="true">
                         <f:validateBean />
                     </p:inputText>
                     <p:message for="login" style="color: red"/>
