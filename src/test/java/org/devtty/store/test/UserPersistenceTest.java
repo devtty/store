@@ -36,9 +36,9 @@ public class UserPersistenceTest {
     }
 
     private static final String[] USER_LOGINS = {
-	"user1",
-	"user2",
-	"user3"
+	"user11",
+	"user21",
+	"user31"
     };
 
     @PersistenceContext
