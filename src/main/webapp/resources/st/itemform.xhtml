@@ -20,14 +20,14 @@
                 <h:panelGrid columns="3">
                     
                     <p:outputLabel value="#{cc.resourceBundleMap.store}" for="store" />
-                    <p:selectOneMenu id="store" value="#{cc.attrs.value.detail.store}">
+                    <p:selectOneMenu id="store" value="#{cc.attrs.value.detail.store}" converter="#{storeConverter}">
                        <!-- TODO insert stores accessible by actual user here -->
                        <f:selectItem itemValue="#{null}" noSelectionOption="true"/>
                        <f:selectItems value="#{itemSearchView.selectableStores}" var="store" itemLabel="#{store.name}" itemValue="#{store}"/>
                     </p:selectOneMenu>
                     <p:message for="store" style="color: red"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.client}" for="client" />
-                    <p:selectOneMenu id="client" value="#{cc.attrs.value.detail.client}">
+                    <p:selectOneMenu id="client" value="#{cc.attrs.value.detail.client}" converter="#{clientConverter}">
                        <!-- TODO insert stores accessible by actual user here -->
                        <f:selectItem itemValue="#{null}" noSelectionOption="true"/>
                        <f:selectItems value="#{itemSearchView.selectableClients}" var="client" itemLabel="#{client.name}" itemValue="#{client}"/>
@@ -58,9 +58,9 @@
                     <p:spinner id="palette" value="#{cc.attrs.value.detail.paletten}" min="0" />
                     <p:message for="palette" style="color: red" />
                     
-                    <p:outputLabel value="#{cc.resourceBundleMap.status}" for="status" />
-                    <st:itemStatus/>
-                    <p:message for="status" style="color: red" />
+                    <!--<p:outputLabel value="#{cc.resourceBundleMap.status}" for="status" />
+                    <st:itemStatus id="status"/>
+                    <p:message for="status" style="color: red" /> -->
                     
                     <p:outputLabel value="#{cc.resourceBundleMap.consolidation}" for="consolidation"/>
                     <h:outputText id="consolidation" value="#{cc.attrs.value.detail.consolidate}"/>
