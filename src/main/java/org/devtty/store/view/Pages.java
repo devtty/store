@@ -19,7 +19,7 @@ public interface Pages {
     
     @Folder(name = "/clients/")
     interface Clients{
-        class Index implements ViewConfig{};
+        class Index implements ViewConfig{}
     }
     
     @Folder(name = "/items/")

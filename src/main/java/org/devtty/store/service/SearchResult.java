@@ -1,5 +1,6 @@
 package org.devtty.store.service;
 
+import java.io.Serializable;
 import org.devtty.store.entity.Client;
 import org.devtty.store.entity.Item;
 import org.devtty.store.entity.User;
@@ -8,7 +9,7 @@ import org.devtty.store.entity.User;
  *
  * @author Denis Renning <denis at devtty.de>
  */
-public class SearchResult {
+public class SearchResult implements Serializable{
 
     public static final String SR_CLIENT = "Client";
     public static final String SR_ITEM = "Item";
