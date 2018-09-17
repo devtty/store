@@ -1,0 +1,19 @@
+<jboss-deployment-structure>
+  <deployment>
+      <!--JAX-RS/WebService-->
+      <!--<exclude-subsystems>
+          <subsystem name="jaxrs"/>
+          <subsystem name="webservices"/>
+      </exclude-subsystems>-->
+      
+      <!--Security-->
+      <dependencies>
+          <module name="org.jboss.security.negotiation" />
+      </dependencies>
+      
+      <!--GELF-Stack Logging-->
+      <!--<exclusions>
+          <module name="biz.paluch.logging" />
+      </exclusions>-->
+  </deployment>
+</jboss-deployment-structure>
