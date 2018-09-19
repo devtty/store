@@ -12,6 +12,7 @@
             <base-name>MessageResources</base-name>
             <var>msg</var>
         </resource-bundle>
+        <message-bundle>org.devtty.store.MessageResources</message-bundle>
     </application>
     
 </faces-config>
