@@ -1,76 +1,52 @@
-<?xml version='1.0' encoding='UTF-8' ?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:pe="http://primefaces.org/ui/extensions"
-      xmlns:ds="http://deltaspike.apache.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:st="http://xmlns.jcp.org/jsf/composite/st">
-    <f:view contentType="text/html" locale="de">
-        <pe:head title="Store">
-            <f:facet name="first">
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <meta http-equiv="pragma" content="no-cache"/>
-                <meta http-equiv="cache-control" content="no-cache"/>
-                <meta http-equiv="expires" content="0"/>
-            </f:facet>
-        <!--<h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css" /> 
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
-        <title>Facelets Template</title>-->
-    </pe:head>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ds="http://deltaspike.apache.org/jsf">
 
-    <h:body>
-        <ds:windowId />
-        <pe:layout fullPage="true">
-            <pe:layoutPane position="north" size="65" closable="false" resizable="false" spacingOpen="3" >
-                <h:panelGrid columns="2" width="100%">
-                    <h:panelGroup>
-                        <h:graphicImage library="images" name="logo.png" />
-                        <h:outputText value="#{request.remoteUser}" />
-                        <h:outputText value="Admin" rendered="#{request.isUserInRole('Admin')}" />
-                        <h:outputText value="User" rendered="#{request.isUserInRole('User')}" />
-                        <h:outputText value="Supervisor" rendered="#{request.isUserInRole('Supervisor')}" />
-                    </h:panelGroup>
-                    <h:panelGroup style="text-align: right;">
-                        <h:form><st:searchbox value="#{searchView}" /></h:form>
-                    </h:panelGroup>
-                </h:panelGrid>
-            </pe:layoutPane>
-            <pe:layoutPane position="south" size="50" closable="false" resizable="false" spacingOpen="3">
-                <h:outputText value="CP2015" />
-            </pe:layoutPane>
-            <pe:layoutPane position="west" minWidth="150" maxWidth="400">
-                <ds:disableClientWindow>
-                    <p:menu id="navigation">
-                        <p:menuitem value="#{msg['nav.users']}" url="/users/index.jsf" rendered="#{request.isUserInRole('Admin')}" />
-                        <p:menuitem value="#{msg['nav.clients']}" url="/clients/index.jsf" rendered="#{request.isUserInRole('Admin')}" />
-                        <p:menuitem value="#{msg['nav.collections']}" url="/collections/index.jsf" />
-                        <p:menuitem value="#{msg['nav.items']}" url="/items/index.jsf" />
-                        <p:menuitem value="#{msg['nav.config']}" url="/config/index.jsf" rendered="#{request.isUserInRole('Admin')}" />
-                    </p:menu>
-                </ds:disableClientWindow>
-            </pe:layoutPane>
-            <pe:layoutPane position="east" size="200">
-                <f:facet name="header">
-                    <h:outputText value="Help"/>
-                </f:facet>
-                <ui:insert name="right">Right</ui:insert>
-            </pe:layoutPane>
-            <pe:layoutPane position="center">
+    <f:view contentType="text/html">
+
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+            </f:facet>
+            <title>Title</title>
+            <h:outputScript name="js/nanoscroller.js" library="omega-layout" />
+            <h:outputScript name="js/layout.js" library="omega-layout" />
+            <!--<h:outputScript name="calendar/de.js" library="js" />-->
+
+            <!--            <ui:insert name="head"/>-->
+
+        </h:head>
+
+        <h:body styleClass="main-body">
+            <ds:windowId/>
+            <div class="wrapper">
+                <ui:include src="topbar.xhtml"/>
+                <ui:include src="sidebar.xhtml"/>
+
+                <div class="main">
+                    <div class="card">
+                    <ui:insert name="content">Content</ui:insert>
+                    </div>
+                </div>
                 
-                    <pe:layoutPane position="center" >
-                        <ui:insert name="content">Content</ui:insert>
-                    </pe:layoutPane>
-                    <pe:layoutPane position="south" size="50">
-                        <ui:insert name="buttons">buttons</ui:insert>
-                    </pe:layoutPane>
-                
-            </pe:layoutPane>
-        </pe:layout>
-        
-    </h:body>
+                <ui:include src="footer.xhtml"/>
+            </div>
+
+           
+
+
+            <h:outputStylesheet name="css/animate.css" library="omega-layout" />
+            <h:outputStylesheet name="css/nanoscroller.css" library="omega-layout" />
+            <h:outputStylesheet name="css/layout.css" library="omega-layout" />
+        </h:body>
     </f:view>
+
 </html>

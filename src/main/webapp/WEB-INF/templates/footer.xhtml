@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:po="http://primefaces.org/omega">
+
+    <div class="footer">
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:commandLink id="loginBtn" value="#{authenticationLinkView.title}" title="title" action="#{authenticationLinkView.redirect}"><h:outputText value="#{session.id}"/></h:commandLink>
+            </h:panelGrid>
+        </h:form>
+    </div>
+</ui:composition>

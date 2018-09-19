@@ -9,7 +9,7 @@
             <default-locale>de</default-locale>
         </locale-config>
         <resource-bundle>
-            <base-name>MessageResources</base-name>
+            <base-name>org.devtty.store.MessageResources</base-name>
             <var>msg</var>
         </resource-bundle>
         <message-bundle>org.devtty.store.MessageResources</message-bundle>
