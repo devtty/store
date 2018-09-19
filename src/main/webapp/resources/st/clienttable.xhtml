@@ -5,7 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:st="http://xmlns.jcp.org/jsf/composite/st">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -18,22 +19,24 @@
                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}" paginator="true" rows="25" paginatorPosition="top">
             <f:facet name="header"><h:outputText value="#{cc.resourceBundleMap.clients}"/></f:facet>
             <f:facet name="{Exporters}">
+                <div style="float: right">
                 <h:commandLink>
                     <p:graphicImage library="images" name="excel.png" width="24" />
-                    <p:dataExporter type="xls" target="clientTable" fileName="clients" />
+                    <p:dataExporter type="xls" target="clientTable" fileName="client.xls" />
                 </h:commandLink>
                 <h:commandLink>
                     <p:graphicImage library="images" name="pdf.png" width="24"/>
-                    <p:dataExporter type="pdf" target="clientTable" fileName="clients" />
+                    <p:dataExporter type="pdf" target="clientTable" fileName="client.pdf" />
                 </h:commandLink>
                 <h:commandLink>
                     <p:graphicImage library="images" name="csv.png" width="24"/>
-                    <p:dataExporter type="csv" target="clientTable" fileName="clients" />
+                    <p:dataExporter type="csv" target="clientTable" fileName="client.csv" />
                 </h:commandLink>
                 <h:commandLink>
                     <p:graphicImage library="images" name="xml.png" width="24"/>
-                    <p:dataExporter type="xml" target="clientTable" fileName="clients" />
+                    <p:dataExporter type="xml" target="clientTable" fileName="client.xml" />
                 </h:commandLink>
+            </div>
             </f:facet>
             <p:ajax event="rowSelect" update="@form" />
             <p:ajax event="rowUnselect" update="@form" />
