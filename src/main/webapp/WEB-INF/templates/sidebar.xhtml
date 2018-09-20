@@ -10,6 +10,7 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:po="http://primefaces.org/omega">
 
+    <h:form id="menuform">
     <div class="sidebar">
         <div class="nano">
             <div class="nano-content sidebar-scroll-content">
@@ -33,12 +34,10 @@
                 </div>
 
                 <div class="menu">
-                    <h:form>
-                       
-                        <po:menu model="#{menuView.model}"/>
-                        </h:form>
+                    <po:menu model="#{menuView.model}"/>
                 </div>
             </div>
         </div>
     </div>
+    </h:form>
 </ui:composition>

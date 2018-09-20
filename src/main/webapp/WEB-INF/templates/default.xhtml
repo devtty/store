@@ -21,7 +21,7 @@
             <h:outputScript name="js/layout.js" library="omega-layout" />
             <!--<h:outputScript name="calendar/de.js" library="js" />-->
 
-            <!--            <ui:insert name="head"/>-->
+                       <ui:insert name="head"/>
 
         </h:head>
 
@@ -40,7 +40,14 @@
                 <ui:include src="footer.xhtml"/>
             </div>
 
-           
+            <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+                <f:facet name="start">
+                    <p:graphicImage name="images/preloader.gif" library="omega-layout" style="width:32px;"/>
+                </f:facet>
+                <f:facet name="complete">
+                    <h:outputText value=""/>
+                </f:facet>
+            </p:ajaxStatus>
 
 
             <h:outputStylesheet name="css/animate.css" library="omega-layout" />
