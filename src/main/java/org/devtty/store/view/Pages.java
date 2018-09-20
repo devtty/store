@@ -1,9 +1,9 @@
 package org.devtty.store.view;
 
-import org.apache.deltaspike.core.api.config.view.DefaultErrorView;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.jsf.api.config.view.Folder;
 import org.apache.deltaspike.jsf.api.config.view.View;
+import org.devtty.store.security.Admin;
 
 /**
  *
@@ -28,6 +28,7 @@ public interface Pages {
     }
     
     @Folder(name = "/users/")
+    @Admin
     interface Users{
         class Index implements ViewConfig{}
     }
