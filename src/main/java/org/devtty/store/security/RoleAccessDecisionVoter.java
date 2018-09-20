@@ -1,3 +1,5 @@
+package org.devtty.store.security;
+
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -40,6 +42,10 @@ public class RoleAccessDecisionVoter extends AbstractAccessDecisionVoter impleme
             }
         }
         
+        if(advc.getMetaDataFor(Admin.class.getName(),Admin.class) != null && !FacesContext.getCurrentInstance().getExternalContext().isUserInRole("Admin")){
+            violations.add((SecurityViolation) () -> "no sufficient permissions");
+        }
+        
         if (!violations.isEmpty()) {
             try {
                 ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).authenticate((HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse());
@@ -51,6 +57,11 @@ public class RoleAccessDecisionVoter extends AbstractAccessDecisionVoter impleme
 
     private boolean viewAccessGranted(AccessDecisionVoterContext advc) {
         Class viewConfig = advc.getMetaDataFor(ViewConfig.class.getName(), Class.class);
+
+        if(viewConfig.getAnnotations()==null){
+            return true;            
+        }
+        
         for(Annotation a : viewConfig.getAnnotations()) {
             if((a instanceof Admin && FacesContext.getCurrentInstance().getExternalContext().isUserInRole("Admin"))){
                 return true;
