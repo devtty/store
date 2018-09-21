@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.security.api.authorization.AbstractAccessDecisionVoter;
 import org.apache.deltaspike.security.api.authorization.AccessDecisionVoterContext;
+import org.apache.deltaspike.security.api.authorization.ErrorViewAwareAccessDeniedException;
 import org.apache.deltaspike.security.api.authorization.SecurityViolation;
 import org.devtty.store.security.Admin;
 import org.slf4j.Logger;
@@ -32,11 +33,14 @@ public class RoleAccessDecisionVoter extends AbstractAccessDecisionVoter impleme
     
     @Override
     protected void checkPermission(AccessDecisionVoterContext advc, Set<SecurityViolation> violations){
+        logger.info("checkPermission");
         HttpServletRequest request = ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest());
         
         if(request.getAuthType()==null){
+            logger.info("authtypenull");
             violations.add((SecurityViolation) () -> "not authenticated");
         }else{
+            logger.info("AuthType not null");
             if(!viewAccessGranted(advc)){
                 violations.add((SecurityViolation) () -> "view access denied, wrong role");
             }
@@ -46,8 +50,11 @@ public class RoleAccessDecisionVoter extends AbstractAccessDecisionVoter impleme
             violations.add((SecurityViolation) () -> "no sufficient permissions");
         }
         
+        logger.info("chkViolations");
         if (!violations.isEmpty()) {
+            logger.info("violations not empty");
             try {
+                logger.info("try auth");
                 ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).authenticate((HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse());
             } catch (IOException | ServletException ex) {
                 logger.error(ex.getMessage());
