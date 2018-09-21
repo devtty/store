@@ -33,16 +33,24 @@ public class MenuView implements Serializable{
         
         DefaultMenuItem itemDashboard = new DefaultMenuItem(messages.menuDashboard());
         DefaultMenuItem itemClients = new DefaultMenuItem(messages.menuClients());
-        itemClients.setHref("/clients/");
+        //itemClients.setHref("/clients/");
+        //itemClients.setOutcome("/clients");
+        itemClients.setUrl("/clients/index.jsf");
         DefaultMenuItem itemCollections = new DefaultMenuItem(messages.menuCollections());
+        itemCollections.setHref("/collections/");
         DefaultMenuItem itemConsolidations = new DefaultMenuItem(messages.menuConsolidations());
+        itemConsolidations.setHref("/consolidations/");
         DefaultMenuItem itemContracts = new DefaultMenuItem(messages.menuContracts());
+        itemContracts.setHref("/contracts/");
         DefaultMenuItem itemContractors = new DefaultMenuItem(messages.menuContractors());
+        itemContractors.setHref("/contractors/");
         DefaultMenuItem itemItems = new DefaultMenuItem(messages.menuItems());
         itemItems.setHref("/items/");
         DefaultMenuItem itemStores = new DefaultMenuItem(messages.menuStores());
+        itemStores.setHref("/stores/");
         DefaultMenuItem itemUsers = new DefaultMenuItem(messages.menuUsers(), "fa fa-user");
-        itemUsers.setHref("/users/index.jsf");
+        //itemUsers.setHref("/users/index.jsf");
+        itemUsers.setUrl("/users/index.jsf");
         
         model.addElement(itemDashboard);
         model.addElement(itemClients);
