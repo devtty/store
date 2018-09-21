@@ -15,9 +15,10 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <p:dataTable id="itemTable" var="item" value="#{cc.attrs.value.all}" selection="#{cc.attrs.value.selected}" rowKey="#{item.id}"
-                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}" paginator="true" rows="25" paginatorPosition="bottom">
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}" paginator="true" rows="25" paginatorPosition="top">
             <f:facet name="header"><h:outputText value="#{cc.resourceBundleMap.items}"/></f:facet>
             <f:facet name="{Exporters}">
+                <div style="float: right">
                 <h:commandLink>
                     <p:graphicImage library="images" name="excel.png" width="24" />
                     <p:dataExporter type="xls" target="itemTable" fileName="items" />
@@ -34,6 +35,7 @@
                     <p:graphicImage library="images" name="xml.png" width="24"/>
                     <p:dataExporter type="xml" target="itemTable" fileName="items" />
                 </h:commandLink>
+                </div>
             </f:facet>
             <p:ajax event="rowSelect" update="@form" />
             <p:ajax event="rowUnselect" update="@form" />
