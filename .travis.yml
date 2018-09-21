@@ -6,7 +6,7 @@ services:
   - docker
 cache:
   directories: -'$HOME/.m2/repository'
-script: mvn clean install -Pwildfly-managed-arquillian
+script: mvn clean install -Popenshift
 deploy:
   provider: openshift
   user: denis@devtty.de
