@@ -9,7 +9,7 @@
 
     <ui:define name="content">
         <h:form id="formContent">
-            <st:usertable value="#{userView}"/>
+            <st:usertable id="userTable" value="#{userView}"/>
         
             <p:commandButton id="new" value="#{msg['action.new']}" action="#{userView.newUser}" />
             <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{userView.editUser}" disabled="#{userView.selectedUsers.size() != 1}" />
@@ -17,7 +17,7 @@
                 <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
             </p:commandButton>
             
-            <p:confirmDialog global="true" showEffect="fade">
+            <p:confirmDialog id="confirmDlg" global="true" showEffect="fade">
                 <p:commandButton value="#{msg['yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="#{msg['no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>

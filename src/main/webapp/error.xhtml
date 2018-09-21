@@ -37,7 +37,7 @@
                         <span class="fa fa-bars"></span>
                     </a>
                     <ul id="menu">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="#">ffffHome</a></li>
                         <li><a href="#introduction">Introduction</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#mobile">Mobile</a></li>
@@ -52,7 +52,7 @@
                     <span class="title">#{msg.welcome}</span>
                     <span class="subtitle">Clean, Elegant and Functional</span>
                     <p:graphicImage name="images/landing/section1_logo.png" library="omega-layout" />
-                    <h:form><p:button id="login" outcome="/users/index" value="#{authenticationLinkView.title}"></p:button></h:form>
+                    <h:form><p:commandButton id="login" type="submit" immediate="true" action="#{authenticationLinkView.redirect()}" value="#{authenticationLinkView.title}"></p:commandButton></h:form>
                 </div>
             </div>
 

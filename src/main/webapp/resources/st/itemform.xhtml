@@ -18,7 +18,8 @@
         <h:form>
             <p:panel id="panel" header="#{cc.resourceBundleMap.header}">
                 <h:panelGrid columns="3">
-                    
+                    <p:outputLabel value="#{cc.resourceBundleMap.id}" for="id"/>
+                    <p:inputText id="id" value="#{cc.attrs.value.detail.id}"/>
                     <p:outputLabel value="#{cc.resourceBundleMap.store}" for="store" />
                     <p:selectOneMenu id="store" value="#{cc.attrs.value.detail.store}" converter="#{storeConverter}">
                        <!-- TODO insert stores accessible by actual user here -->
