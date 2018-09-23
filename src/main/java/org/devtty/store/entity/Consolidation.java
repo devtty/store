@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -36,15 +37,21 @@ public class Consolidation extends AbstractPersistable{
     private String vaddress;
     private String laddress;
     private String fixTerm;
+    
+    @Size(max = 30)
     private String adr;
     private String type;
     private String name;
+    
+    @Size(max = 250)
     private String annotation;
     private String contact;
     private String ass;
     private String reference;
     private String registerNo;
     private String sender;
+    
+    @Size(max = 250)
     private String additional;
     private String collection;
     private String ordernr;
