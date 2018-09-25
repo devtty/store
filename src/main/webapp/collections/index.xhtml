@@ -8,11 +8,11 @@
                 xmlns:st="http://xmlns.jcp.org/jsf/composite/st">
 
     <ui:define name="content">
-        <h:form id="formContent">
-            <st:itemtable value="#{itemView}"/>
-            <p:commandButton id="new" value="#{msg['action.new']}" action="#{itemView.create}" />
-            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{itemView.edit}" disabled="#{itemView.selected.size() != 1}" />
-            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{itemView.delete}" disabled="#{itemView.selected.size() == 0}">
+        <h:form id="collectionIndexForm">
+            <st:collectiontable id="table" value="#{collectionView}"/>
+            <p:commandButton id="new" value="#{msg['action.new']}" action="#{collectionView.newCollection}" />
+            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{collectionView.editCollection}" disabled="#{collectionView.selected.size() != 1}" />
+            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{collectionView.deleteCollection()}" disabled="#{collectionView.selected.size() == 0}">
                 <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
             </p:commandButton>
             

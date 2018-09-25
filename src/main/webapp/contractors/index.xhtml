@@ -9,10 +9,10 @@
 
     <ui:define name="content">
         <h:form id="formContent">
-            <st:itemtable value="#{itemView}"/>
-            <p:commandButton id="new" value="#{msg['action.new']}" action="#{itemView.create}" />
-            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{itemView.edit}" disabled="#{itemView.selected.size() != 1}" />
-            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{itemView.delete}" disabled="#{itemView.selected.size() == 0}">
+            <st:contractortable value="#{contractorView}"/>
+            <p:commandButton id="new" value="#{msg['action.new']}" action="#{contractorView.newContractor}" />
+            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{contractorView.editContractor}" disabled="#{contractorView.selected.size() != 1}" />
+            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{contractorView.deleteContractor()}" disabled="#{contractorView.selected.size() == 0}">
                 <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
             </p:commandButton>
             

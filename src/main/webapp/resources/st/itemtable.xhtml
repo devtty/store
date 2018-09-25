@@ -44,12 +44,35 @@
 
             <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
             <p:column headerText="#{cc.resourceBundleMap.id}" sortBy="#{item.id}"><h:outputText value="#{item.id}" /></p:column>
-            <p:column headerText="#{cc.resourceBundleMap.indate}" sortBy="#{item.indate}"><h:outputText value="#{item.indate}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.indate}" sortBy="#{item.indate}"><h:outputText value="#{item.indate}"><f:convertDateTime dateStyle="short"/></h:outputText></p:column>
             <p:column headerText="#{cc.resourceBundleMap.name}" sortBy="#{item.name}"><h:outputText value="#{item.name}"/></p:column>
             <p:column headerText="#{cc.resourceBundleMap.store}" sortBy="#{item.store}"><h:outputText value="#{item.store.name}"/></p:column>
             <p:column headerText="#{cc.resourceBundleMap.clientname}" sortBy="#{item.client.name}"><h:outputText value="#{item.client.name}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.startcorporation}" sortBy="#{item.startcorporation}"><h:outputText value="#{item.startcorporation}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.kolli}" sortBy="#{item.kolli}"><h:outputText value="#{item.kolli}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.storeUnit}" sortBy="#{item.storeUnit}"><h:outputText value="#{item.storeUnit}"/></p:column>
             <p:column headerText="#{cc.resourceBundleMap.currentWeight}" sortBy="#{item.currentWeight}"><h:outputText value="#{item.currentWeight}"/></p:column>
             <p:column headerText="#{cc.resourceBundleMap.status}" sortBy="#{item.status}"><h:outputText value="#{item.status}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.t1}" sortBy="#{item.t1}">
+                <h:outputText class="fa fa-check" rendered="#{item.t1}"/>
+                <h:outputText class="fa fa-minus" rendered="#{!item.t1}"/>
+            </p:column>
+            <p:column headerText="#{cc.resourceBundleMap.ex}" sortBy="#{item.ex}">
+                <h:outputText class="fa fa-check" rendered="#{item.ex}"/>
+                <h:outputText class="fa fa-minus" rendered="#{!item.ex}"/>
+            </p:column>
+            <p:column headerText="#{cc.resourceBundleMap.customsIn}" sortBy="#{item.customsIn}"><h:outputText value="#{item.customsIn}"><f:convertDateTime dateStyle="short"/></h:outputText></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.outDate}" sortBy="#{item.outDate}"><h:outputFormat value="#{item.outDate}"><f:convertDateTime dateStyle="short"/></h:outputFormat></p:column>
+            <p:columnGroup type="footer">
+                <p:row>
+                    <p:column colspan="6" style="text-align: right" footerText="Totals"/>
+                    <p:column footerText="3333"/>
+                    <p:column footerText="12"/>
+                    <p:column footerText="43234.00"/>
+                    <p:column footerText="234.22"/>
+                    <p:column colspan="5"/>
+                </p:row>
+            </p:columnGroup>
         </p:dataTable>
     </cc:implementation>
 </html>
