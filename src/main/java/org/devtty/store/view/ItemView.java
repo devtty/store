@@ -2,9 +2,9 @@ package org.devtty.store.view;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.devtty.store.entity.Item;
-import org.devtty.store.security.Admin;
 import org.devtty.store.service.ItemRepository;
 import org.slf4j.Logger;
 
@@ -27,17 +27,17 @@ public class ItemView extends AbstractPersistableIndexView<ItemRepository, Item>
         return "/items/index";
     }
     
-    public String newItem(){
+    public Class<? extends ViewConfig> create(){
         setDetail(new Item());
-        return "/items/edit";
+        return Pages.Items.Edit.class;
     }
     
-    public String editItem(){
+    public Class<? extends ViewConfig> edit(){
         setDetail((Item) getSelected().get(0));
-        return "/items/edit";
+        return Pages.Items.Edit.class;
     }
     
-    public String deleteItem(){
+    public String delete(){
         // TODO implement
         init();
         return "/items/index";

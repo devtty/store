@@ -23,11 +23,43 @@ public interface Pages {
     @Folder(name = "/clients/")
     interface Clients{
         class Index implements ViewConfig{}
+        class Edit implements ViewConfig{}
+    }
+    
+    @Folder(name = "/collections/")
+    interface Collections{
+        class Index implements ViewConfig{}
+        class Edit implements ViewConfig{}
+    }
+    
+    @Folder(name = "/consolidations/")
+    interface Consolidations{
+        class Index implements ViewConfig{}
+        class Edit implements ViewConfig{}
+    }
+    
+    @Folder(name = "/contractors/")
+    interface Contractors{
+        class Index implements ViewConfig{}
+        class Edit implements ViewConfig{}
+    }
+    
+    @Folder(name = "/contracts/")
+    interface Contracts{
+        class Index implements ViewConfig{}
+        class Edit implements ViewConfig{}
     }
     
     @Folder(name = "/items/")
     interface Items{
         class Index implements ViewConfig{}
+        class Edit implements ViewConfig{}
+    }
+    
+    @Folder(name = "/stores/")
+    interface Stores{
+        class Index implements ViewConfig{}
+        class Edit implements ViewConfig{}
     }
     
     @Folder(name = "/users/")

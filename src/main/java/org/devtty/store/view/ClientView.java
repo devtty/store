@@ -2,6 +2,7 @@ package org.devtty.store.view;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.devtty.store.entity.Client;
 import org.devtty.store.service.ClientRepository;
@@ -20,23 +21,23 @@ public class ClientView extends AbstractPersistableIndexView<ClientRepository, C
     @Inject ClientRepository clientRepository;
     @Inject Logger logger;
     
-    public String save(){
+    public Class<? extends ViewConfig> save(){
         clientRepository.save(getDetail());
         init();
-        return "/clients/index";
+        return Pages.Clients.Index.class;
     }
     
-    public String newClient(){
+    public Class<? extends ViewConfig> create(){
         setDetail(new Client());
-        return "/clients/edit";
+        return Pages.Clients.Edit.class;
     }
     
-    public String editClient(){
+    public Class<? extends ViewConfig> edit(){
         setDetail(getSelected().get(0));
-        return "/clients/edit";
+        return Pages.Clients.Edit.class;
     }
     
-    public String deleteClient(){
+    public String delete(){
         // TODO implement
         init();
         return "/clients/index";
