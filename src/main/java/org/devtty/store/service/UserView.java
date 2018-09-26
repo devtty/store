@@ -20,7 +20,7 @@ import org.slf4j.Logger;
  */
 @Named
 @WindowScoped
-@Admin
+//@Admin
 public class UserView implements Serializable{
     
     @Inject UserRepository userRepository;

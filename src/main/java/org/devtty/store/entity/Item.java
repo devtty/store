@@ -7,12 +7,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.apache.deltaspike.data.api.audit.CreatedOn;
+import org.apache.deltaspike.data.api.audit.ModifiedOn;
 import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
 import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
 import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
+import org.hibernate.envers.Audited;
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
@@ -28,6 +33,7 @@ import org.hibernate.search.annotations.TokenizerDef;
 @Entity
 @Table(name = "ST_ITEM")
 @SequenceGenerator(name = "SQ_GEN", sequenceName = "ST_SQ_ITEM")
+@Audited(targetAuditMode = NOT_AUDITED)
 @Indexed
 @AnalyzerDef(name = "itemanalyzer",
         tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
@@ -53,16 +59,22 @@ public class Item extends AbstractPersistable{
     private String bvdInfo;
     private String vehicleNo;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date startdate;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date indate;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date outDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date customsIn;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date lastChange;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedOn
+    private Date created;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @ModifiedOn
+    private Date updated;
     
     @NotNull
     @Min(value = 0)
@@ -201,14 +213,6 @@ public class Item extends AbstractPersistable{
 
     public void setCustomsIn(Date customsIn) {
         this.customsIn = customsIn;
-    }
-
-    public Date getLastChange() {
-        return lastChange;
-    }
-
-    public void setLastChange(Date lastChange) {
-        this.lastChange = lastChange;
     }
 
     public Integer getKolli() {
@@ -353,6 +357,22 @@ public class Item extends AbstractPersistable{
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
 }
