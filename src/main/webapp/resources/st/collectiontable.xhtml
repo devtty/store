@@ -45,6 +45,14 @@
             <p:column selectionMode="multiple" style="width:16px;text-align: center"/>
             <p:column headerText="#{cc.resourceBundleMap.id}" sortBy="#{collection.id}"><h:outputText value="#{collection.id}"/></p:column>
             <p:column headerText="#{cc.resourceBundleMap.name}" sortBy="#{collection.name}"><h:outputText value="#{collection.name}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.date}" sortBy="#{collection.date}"><h:outputText value="#{collection.date}"><f:convertDateTime dateStyle="short"/></h:outputText></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.client}" sortBy="#{collection.client.name}"><h:outputText value="#{collection.client.name}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.infos}" sortBy="#{collection.infos}"><h:outputText value="#{collection.infos}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.status}" sortBy="#{collection.status}"><h:outputText value="#{collection.status}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.outNr}" sortBy="#{collection.outNr}"><h:outputText value="#{collection.outNr}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.outVehicleId}" sortBy="#{collection.outVehicleId}"><h:outputText value="#{collection.outVehicleId}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.outDestination}" sortBy="#{collection.outDestination}"><h:outputText value="#{collection.outDestination}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.totals}"><h:outputText value="totals"/></p:column>
                 
         </p:dataTable>
     </cc:implementation>
