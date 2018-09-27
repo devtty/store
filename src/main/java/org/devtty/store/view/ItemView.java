@@ -1,5 +1,6 @@
 package org.devtty.store.view;
 
+import java.math.BigDecimal;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
@@ -43,4 +44,13 @@ public class ItemView extends AbstractPersistableIndexView<ItemRepository, Item>
         return "/items/index";
     }
 
+    
+    public int getSumKolli(){
+        return getAll().stream().mapToInt(o -> o.getKolli()).sum();
+    }
+    
+    public int getSumStoreUnit(){
+        return getAll().stream().mapToInt(o -> o.getStoreUnit()).sum();
+    }
+    
 }

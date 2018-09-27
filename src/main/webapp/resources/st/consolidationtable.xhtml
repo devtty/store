@@ -45,7 +45,16 @@
             <p:column selectionMode="multiple" style="width:16px;text-align: center"/>
             <p:column headerText="#{cc.resourceBundleMap.id}" sortBy="#{consolidation.id}"><h:outputText value="#{consolidation.id}"/></p:column>
             <p:column headerText="#{cc.resourceBundleMap.name}" sortBy="#{consolidation.name}"><h:outputText value="#{consolidation.name}"/></p:column>
-                
+            <p:column headerText="#{cc.resourceBundleMap.orderNr}" sortBy="#{consolidation.orderNr}"><h:outputText value="#{consolidation.orderNr}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.client}" sortBy="#{consolidation.client.name}"><h:outputText value="#{consolidation.client.name}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.contractor}" sortBy="#{consolidation.contractor.name}"><h:outputText value="#{consolidation.contractor.name}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.status}" sortBy="#{consolidation.status}"><h:outputText value="#{consolidation.status}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.execDate}" sortBy="#{consolidation.execDate}"><h:outputText value="#{consolidation.execDate}"><f:convertDateTime dateStyle="short"/></h:outputText></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.bruttoWeight}" sortBy="#{consolidation.bruttoWeight}"><h:outputText value="#{consolidation.bruttoWeight}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.collection}" sortBy="#{consolidation.collection.id}"><h:outputText value="#{consolidation.collection.id}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.sender}" sortBy="#{consolidation.sender}"><h:outputText value="#{consolidation.sender}"/></p:column>
+            <p:column headerText="#{cc.resourceBundleMap.contract}" sortBy="#{consolidation.contract}"><h:outputText value="#{consolidation.client.name}"/></p:column>
+            
         </p:dataTable>
     </cc:implementation>
 </html>

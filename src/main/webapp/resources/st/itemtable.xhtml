@@ -65,12 +65,12 @@
             <p:column headerText="#{cc.resourceBundleMap.outDate}" sortBy="#{item.outDate}"><h:outputFormat value="#{item.outDate}"><f:convertDateTime dateStyle="short"/></h:outputFormat></p:column>
             <p:columnGroup type="footer">
                 <p:row>
-                    <p:column colspan="6" style="text-align: right" footerText="Totals"/>
-                    <p:column footerText="3333"/>
-                    <p:column footerText="12"/>
+                    <p:column colspan="7" style="text-align: right" footerText="Totals"/>
+                    <p:column footerText="#{itemView.sumKolli}"/>
+                    <p:column footerText="#{itemView.sumStoreUnit}"/>
                     <p:column footerText="43234.00"/>
                     <p:column footerText="234.22"/>
-                    <p:column colspan="5"/>
+                    <p:column colspan="4"/>
                 </p:row>
             </p:columnGroup>
         </p:dataTable>

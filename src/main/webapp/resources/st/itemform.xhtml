@@ -122,7 +122,9 @@
                     <p:inputText id="inV" value="#{cc.attrs.value.detail.inV}" />
                     <p:message for="inV"/>
                     
-                    <!-- TODO StlPl prop in legacy ? -->
+                    <p:outputLabel value="#{cc.resourceBundleMap.storeUnit}" for="storeUnit"/>
+                    <p:spinner id="storeUnit" value="#{cc.attrs.value.detail.storeUnit}" min="0"/>
+                    <p:message for="storeUnit"/>
                     
                     <p:outputLabel value="#{cc.resourceBundleMap.docs}" for="docs"/>
                     <p:inputText id="docs" value="#{cc.attrs.value.detail.docs}" />
