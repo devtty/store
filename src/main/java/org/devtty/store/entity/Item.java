@@ -80,12 +80,13 @@ public class Item extends AbstractPersistable{
     @Min(value = 0)
     private Integer kolli;
     private Integer paletten;
+    private Integer storeUnit;
+    
     
     private Double inW;
     private Double inV;
     private Double currentWeight;
     
-    private BigDecimal storeUnit;
     private BigDecimal key;
     private BigDecimal lid;
     private BigDecimal splitId;
@@ -255,11 +256,11 @@ public class Item extends AbstractPersistable{
         this.currentWeight = currentWeight;
     }
 
-    public BigDecimal getStoreUnit() {
+    public Integer getStoreUnit() {
         return storeUnit;
     }
 
-    public void setStoreUnit(BigDecimal storeUnit) {
+    public void setStoreUnit(Integer storeUnit) {
         this.storeUnit = storeUnit;
     }
 
