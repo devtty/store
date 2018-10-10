@@ -10,9 +10,9 @@
     <ui:define name="content">
         <h:form id="formContent">
             <st:storetable value="#{storeView}" />
-            <p:commandButton id="new" value="#{msg['action.new']}" action="#{storeView.newStore}" />
-            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{storeView.editStore}" disabled="#{storeView.selected.size() != 1}" />
-            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{storeView.deleteStore()}" disabled="#{storeView.selected.size() == 0}">
+            <p:commandButton id="new" value="#{msg['action.new']}" action="#{storeView.create()}" />
+            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{storeView.edit()}" disabled="#{storeView.selected.size() != 1}" />
+            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{storeView.delete()}" disabled="#{storeView.selected.size() == 0}">
                 <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
             </p:commandButton>
             
