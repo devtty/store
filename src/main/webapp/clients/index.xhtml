@@ -9,13 +9,16 @@
 
     <ui:define name="content">
         <h:form id="clientIndexForm">
-            <st:clienttable id="table" value="#{clientView}"/>
+            <div class="card"><st:clienttable id="table" value="#{clientView}"/></div>
+            <div class="card">
+                <h:panelGrid columns="3">
             <p:commandButton id="new" value="#{msg['action.new']}" action="#{clientView.create()}" />
             <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{clientView.edit()}" disabled="#{clientView.selected.size() != 1}" />
             <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{clientView.delete()}" disabled="#{clientView.selected.size() == 0}">
                 <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
             </p:commandButton>
-            
+                </h:panelGrid>
+            </div>
             <p:confirmDialog global="true" showEffect="fade">
                 <p:commandButton value="#{msg['yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="#{msg['no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
