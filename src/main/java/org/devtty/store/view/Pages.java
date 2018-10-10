@@ -20,6 +20,9 @@ public interface Pages {
     @View(basePath = "/")
     class Error extends DefaultErrorView{};
     
+    @View(basePath = "/")
+    class Calendar implements ViewConfig{}
+    
     @Folder(name = "/clients/")
     interface Clients{
         class Index implements ViewConfig{}
