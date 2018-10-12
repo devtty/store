@@ -15,7 +15,7 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <p:dataTable id="consolidationTable" var="consolidation" value="#{cc.attrs.value.all}" selection="#{cc.attrs.value.selected}" rowKey="#{consolidation.id}"
-                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}" paginator="true" rows="25" paginatorPosition="top">
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}" paginator="true" rows="25" paginatorPosition="bottom">
             <f:facet name="header"><h:outputText value="#{cc.resourceBundleMap.consolidations}"/></f:facet>
             <f:facet name="{Exporters}">
                 <div style="float: right">

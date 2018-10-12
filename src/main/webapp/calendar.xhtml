@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/default.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:st="http://xmlns.jcp.org/jsf/composite/st"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+        <h:form id="calendarForm">
+            <div class="card">
+            <p:schedule id="schedule" value="#{calendarView.model}" widgetVar="myschedule" allDaySlot="false" aspectRatio="2.2" view="basicWeek" timeZone="GMT+2"> 
+                <p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="calendarDetails" oncomplete="PF('calendarDialog').show();" />
+                <p:ajax event="eventSelect" listener="#{calendarView.onEventSelect}" update="calendarDetails" oncomplete="PF('calendarDialog').show();" />
+            </p:schedule>
+                </div>
+            <div class="card">
+                <p:commandButton value="#{msg['action.import']}"/>
+            </div>
+            <p:dialog widgetVar="calendarDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                <h:panelGrid id="calendarDetails" columns="2">
+                    <p:outputLabel for="title" value="#{msg['holiday.title']}"/>
+                    <p:inputText id="title" value="#{calendarView.event.title}" required="true"/>
+                    <p:outputLabel for="from" value="From:" />
+
+                    <p:calendar id="from" value="#{calendarView.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+
+                    <p:outputLabel for="to" value="To:" />
+                    <p:calendar id="to" value="#{calendarView.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+
+                    <p:outputLabel for="allDay" value="All Day:" />
+                    <h:selectBooleanCheckbox id="allDay" value="#{calendarView.event.allDay}" />
+
+                    <p:outputLabel for="frequency" value="#{msg['holiday.frequency']}"/>
+                    <p:selectOneMenu id="frequency">
+                        <f:selectItem itemValue="1" itemLabel="asdf"/>
+                        <f:selectItem itemValue="2" itemLabel="asdsd" />
+                    </p:selectOneMenu>
+
+                    <p:commandButton type="reset" value="reset"/>
+                    <p:commandButton id="add" value="save" actionListener="#{calendarView.addEvent}" oncomplete="PF('myschedule').update();PF('calendarDialog').hide();"/>
+                </h:panelGrid>
+            </p:dialog>
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>

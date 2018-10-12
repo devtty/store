@@ -9,13 +9,15 @@
 
     <ui:define name="content">
         <h:form id="formContent">
-            <st:itemtable value="#{itemView}"/>
-            <p:commandButton id="new" value="#{msg['action.new']}" action="#{itemView.create}" />
-            <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{itemView.edit}" disabled="#{itemView.selected.size() != 1}" />
-            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{itemView.delete}" disabled="#{itemView.selected.size() == 0}">
-                <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
-            </p:commandButton>
-            
+            <div class="card"><st:itemtable value="#{itemView}"/></div>
+            <div class="card">
+                <p:commandButton id="new" value="#{msg['action.new']}" action="#{itemView.create}" />
+                <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{itemView.edit}" disabled="#{itemView.selected.size() != 1}" />
+                <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{itemView.delete}" disabled="#{itemView.selected.size() == 0}">
+                    <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
+                </p:commandButton>
+            </div>
+
             <p:confirmDialog global="true" showEffect="fade">
                 <p:commandButton value="#{msg['yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="#{msg['no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />

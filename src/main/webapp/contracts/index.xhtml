@@ -9,14 +9,16 @@
 
     <ui:define name="content">
         <h:form id="formContent">
-            <st:contracttable value="#{contractView}"/>
-            <p:commandButton id="copy" value="#{msg['action.copy']}" action="#{contractView.copyContract}" disabled="#{contractView.selected.size() != 1}">
-                <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert"/>
-            </p:commandButton>
-            <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{contractView.deleteContract()}" disabled="#{contractView.selected.size() == 0}" rendered="#{request.isUserInRole('Supervisor')}">
-                <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
-            </p:commandButton>
-            
+            <div class="card"><st:contracttable value="#{contractView}"/></div>
+            <div class="card">
+                <p:commandButton id="copy" value="#{msg['action.copy']}" action="#{contractView.copyContract}" disabled="#{contractView.selected.size() != 1}">
+                    <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="delete" value="#{msg['action.delete']}" update="@form" actionListener="#{contractView.deleteContract()}" disabled="#{contractView.selected.size() == 0}" rendered="#{request.isUserInRole('Supervisor')}">
+                    <p:confirm header="#{msg['confirm']}" message="#{msg['sure']}" icon="ui-icon-alert" />
+                </p:commandButton>
+            </div>
+
             <p:confirmDialog global="true" showEffect="fade">
                 <p:commandButton value="#{msg['yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="#{msg['no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />

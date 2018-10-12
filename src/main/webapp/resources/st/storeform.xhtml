@@ -22,6 +22,14 @@
                         <f:validateBean />
                     </p:inputText>
                     <p:message for="name" style="color: red"/>
+                    <p:outputLabel value="#{cc.resourceBundleMap.zipCode}" for="zipCode" />
+                    <p:inputText id="zipCode" value="#{cc.attrs.value.detail.zipCode}"/>
+                    <p:message for="zipCode" />
+                    <p:outputLabel value="#{cc.resourceBundleMap.holidays}" for="iso3166"/>
+                    <p:selectOneMenu id="iso3166" value="#{cc.attrs.value.detail.iso3166}">
+                        <f:selectItem itemValue="DE" itemLabel="Deutschland"/>
+                    </p:selectOneMenu>
+                    <p:message for="iso3166"/>
                 </h:panelGrid>
             
                 <p:commandButton id="submitButton" update="@form" value="#{msg['submit']}" action="#{cc.attrs.value.save()}" />
