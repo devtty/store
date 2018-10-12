@@ -31,6 +31,10 @@ public class Store extends AbstractPersistable{
     @Size(max = 250)
     private String address;
 
+    private String zipCode;
+    
+    private String iso3166;
+    
     public String getName() {
         return name;
     }
@@ -46,5 +50,23 @@ public class Store extends AbstractPersistable{
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getIso3166() {
+        return iso3166;
+    }
+
+    public void setIso3166(String iso3166) {
+        this.iso3166 = iso3166;
+    }
+    
+    
 
 }
