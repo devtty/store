@@ -6,7 +6,12 @@ sudo: required
 #   - docker
 cache:
   directories: -'$HOME/.m2/repository'
-script: mvn clean install -Popenshift
+jobs:
+  include:
+      - stage: test
+        script: mvn clean install -Popenshift
+      - stage: deploy
+        script: mvn site
 # deploy:
 #   provider: openshift
 #   user: denis@devtty.de
