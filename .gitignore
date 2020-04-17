@@ -245,3 +245,5 @@ pip-log.txt
 /org.devtty.store.entity.User/_2.cfe
 /org.devtty.store.entity.User/write.lock
 /nbactions-wildfly-remote.xml
+/nbactions-wildfly-managed-arquillian.xml
+/settings.xml
