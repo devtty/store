@@ -2,6 +2,7 @@ package org.devtty.store.view;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.apache.deltaspike.core.api.provider.BeanProvider;
@@ -18,7 +19,7 @@ public abstract class AbstractPersistableIndexView<REPO extends EntityRepository
     
     private List<ENT> all;
     
-    private List<ENT> selected;
+    private List<ENT> selected = new ArrayList<>();
 
     public ENT getDetail() {
         return detail;

@@ -31,8 +31,7 @@ public class UserPersistenceTest {
 	return ShrinkWrap.create(WebArchive.class, "test.war")
 	    .addPackage(User.class.getPackage())
 	    .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
-	    .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addAsWebInfResource("test-h2-ds.xml", "test-h2-ds.xml");
+	    .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     private static final String[] USER_LOGINS = {

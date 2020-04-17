@@ -1,7 +1,7 @@
 {
     "realm": "devtty",
     "resource": "store",
-    "auth-server-url": "http://keycloak-openshift-storeoc.193b.starter-ca-central-1.openshiftapps.com/auth",
+    "auth-server-url": "http://localhost:8081/auth",
     "ssl-required": "none",
     "public-client": "true",
     "use-resource-role-mappings": true

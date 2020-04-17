@@ -1,11 +1,14 @@
 package org.devtty.store.test.functional;
 
+import org.jboss.arquillian.graphene.GrapheneElement;
 import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.Arquillian;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 
 /**
  *
@@ -43,19 +46,19 @@ public class ClientIndexFunctionalTest extends FunctionalTest{
         assertFalse(page.getEditBtn().isEnabled());
         assertTrue(page.getDeleteBtn().isPresent());
         assertTrue(page.getDeleteBtn().isDisplayed());
-        assertFalse(page.getDeleteBtn().isEnabled());
+        assertFalse("Delete button shouldn't be enabled", page.getDeleteBtn().isEnabled());
+    }
+    
+    @Test
+    public void testTableHeaders(){
+        browser.get(deploymentUrl.toExternalForm() + "/clients/index.jsf");
+        GrapheneElement header = page.getDatatable().findElement(By.className("ui-datatable-header"));
+        assertEquals("Table Header doesnt match", header.getText(), "Kunden");
         
-                
-        //assertTrue("clientTable not present", datatable.isPresent());
-        //assertTrue("newBtn not present", newBtn.isPresent());
-        //assertTrue(newBtn.isDisplayed());
-        //assertTrue(newBtn.isEnabled());
-        //assertTrue("editBtn not present", editBtn.isPresent());
-        //assertTrue(editBtn.isDisplayed());
-        //assertFalse(editBtn.isEnabled());
-        //assertTrue("deleteBtn not present", deleteBtn.isPresent());
-        //assertTrue(deleteBtn.isDisplayed());
-        //assertFalse(deleteBtn.isEnabled());
+        GrapheneElement head = page.getDatatable().findElement(By.id("clientIndexForm:table:clientTable_head"));
+        GrapheneElement selectAllCheckbox = head.findElement(By.name("clientIndexForm:table:clientTable_checkbox"));
+        assertTrue(selectAllCheckbox.isPresent());
+        
     }
     
 }

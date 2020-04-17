@@ -1,6 +1,7 @@
 package org.devtty.store.test.functional;
 
 import org.jboss.arquillian.graphene.GrapheneElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 /**
@@ -11,6 +12,9 @@ public class ClientIndexPage {
 
     @FindBy(id = "clientIndexForm:table:clientTable")
     private GrapheneElement datatable;
+    
+    @FindBy(id = "clientIndexForm:table:clientTable_head")
+    private GrapheneElement tablehead;
     
     @FindBy(id = "clientIndexForm:new")
     private GrapheneElement newBtn;
@@ -37,6 +41,9 @@ public class ClientIndexPage {
         return deleteBtn;
     }
     
-    
+    public void selectAll(){
+        GrapheneElement findElement = tablehead.findElement(By.xpath("//input[@type='checkbox']"));
+        findElement.click();
+    }
     
 }

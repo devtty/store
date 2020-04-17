@@ -5,10 +5,28 @@ title Entities - Class Diagram
 class Client{
 
 }
-enum CollectionStatus
+
+class Collection{
+  client : Client
+  files : List<File>
+}
+
+enum CollectionStatus{
+  ARCHIVE
+  DELETED
+  OK
+  RECIEVED
+  SHIP
+  STORNED
+  STORNO
+}
 
 class Consolidation{
- ConsolidationStatus status
+  client : Client
+  contract : Contract
+  contractor : Contractor
+  files : List<File>
+  status : ConsolidationStatus 
 }
 
 enum ConsolidationStatus{
@@ -19,9 +37,63 @@ enum ConsolidationStatus{
  INVOICE
 }
 
+class Contract{
+}
+
+enum ContractStatus{
+  EDIT
+  RUNNING
+  REQUEST
+  FINISHED
+}
+
+class Contractor{
+
+}
+
+class File{
+
+}
+
 class Item{
   .. Fields ..
-Long id
+  id : Long
+  client : Client
+  store : Store
+  files : List<Files>
+  status : ItemStatus
 }
+
+enum ItemStatus{
+  DELETED
+  RECIEVED
+  OK
+  REQUEST
+  SHIP
+  LEAVING
+  ARCHIVE
+  STORNO
+  CALLBACK
+  
+}
+
+class Store{
+}
+
+Collection o-- "1..*" Item
+Collection -- CollectionStatus
+Collection -- Client
+Collection o-- "0..*" File
+Item -- ItemStatus
+Item -- Client
+Item -- Store
+Item o-- "0..*" File
+Consolidation -- Client
+Consolidation -- ConsolidationStatus
+Consolidation -- Contract
+Consolidation -- Contractor
+Consolidation o-- "0..*" File
+Contractor o-- "0..*" Contract
+Contract -- ContractStatus
 
 @enduml

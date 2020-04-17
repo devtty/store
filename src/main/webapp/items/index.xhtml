@@ -9,7 +9,7 @@
 
     <ui:define name="content">
         <h:form id="formContent">
-            <div class="card"><st:itemtable value="#{itemView}"/></div>
+            <div class="card"><st:itemtable id="ta" value="#{itemView}"/></div>
             <div class="card">
                 <p:commandButton id="new" value="#{msg['action.new']}" action="#{itemView.create}" />
                 <p:commandButton id="edit" value="#{msg['action.edit']}" action="#{itemView.edit}" disabled="#{itemView.selected.size() != 1}" />

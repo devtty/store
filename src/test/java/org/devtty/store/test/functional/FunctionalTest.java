@@ -7,6 +7,7 @@ import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.jboss.shrinkwrap.resolver.api.maven.archive.importer.MavenImporter;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +26,11 @@ public class FunctionalTest {
  
     @Deployment(testable = false)
     public static WebArchive createDeployment(){
-        return ShrinkWrap.create(MavenImporter.class).loadPomFromFile("pom.xml").importBuildOutput().as(WebArchive.class);
+        //Maven.configureResolver().withMavenCentralRepo(false)
+        //        .withRemoteRepo("Maven Central", "https://repo.maven.apache.org/maven2/", "default");
+        //return ShrinkWrap.create(MavenImporter.class).loadPomFromFile("pom.xml").importBuildOutput().as(WebArchive.class).addAsResource("test-persistence.xml", "META-INF/persistence.xml").addAsWebInfResource("test-web.xml", "web.xml");//.addAsWebInfResource("test-h2-ds.xml");
+        //Files[] files = Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve().withTransitivity().asFile();
+        return ShrinkWrap.create(MavenImporter.class).loadPomFromFile("pom.xml").importBuildOutput().as(WebArchive.class).addAsResource("test-persistence.xml", "META-INF/persistence.xml").addAsWebInfResource("test-web.xml", "web.xml");//.addAsWebInfResource("test-h2-ds.xml");
     }
     
     @Before

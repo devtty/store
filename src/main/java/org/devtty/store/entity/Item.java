@@ -3,6 +3,8 @@ package org.devtty.store.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -98,6 +100,7 @@ public class Item extends AbstractPersistable{
     private boolean adr;
     private boolean ex;
     
+    @Enumerated(EnumType.STRING)
     private ItemStatus status;
     
     @ManyToOne
