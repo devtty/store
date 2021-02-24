@@ -333,7 +333,7 @@
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ftp</artifactId>
-                <version>2.9</version>
+                <version>3.4.3</version>
             </extension>
         </extensions>
         <plugins>
