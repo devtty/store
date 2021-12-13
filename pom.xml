@@ -271,7 +271,7 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-adapter-core</artifactId>
-            <version>8.0.0</version>
+            <version>15.1.0</version>
             <scope>provided</scope>
         </dependency>
         
