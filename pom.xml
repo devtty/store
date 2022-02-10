@@ -681,12 +681,8 @@
                                     <goal>exec</goal>
                                 </goals>
                                 <configuration>
-                                
                                     <executable>${cli.executable}</executable>
                                     <workingDirectory>target/wildfly-${version.wildfly}/bin</workingDirectory>
-                                    <environmentVariables>
-                                        <JAVA_HOME>${app.server.java.home}</JAVA_HOME>
-                                    </environmentVariables>
                                     <arguments>
                                         <argument>--file=./adapter-elytron-install-offline.cli</argument>
                                         <!--<argument>target/wildfly-${version.wildfly}/bin</argument>-->
