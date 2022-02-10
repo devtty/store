@@ -46,7 +46,7 @@
         <version.deltaspike>1.9.3</version.deltaspike>
         <version.activiti>5.17.0</version.activiti>
         <version.rewrite>2.0.12.Final</version.rewrite>
-	<sonar.organization>devtty-github</sonar.organization>
+	<sonar.organization>devtty</sonar.organization>
 	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     
