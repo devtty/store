@@ -1,7 +1,6 @@
 package org.devtty.store.view;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
@@ -13,7 +12,6 @@ import org.devtty.store.service.HolidayRepository;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
-import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import org.slf4j.Logger;
@@ -77,15 +75,7 @@ public class CalendarView implements Serializable{
     
     @PostConstruct
     public void init(){
-        /*model = new LazyScheduleModel(){
-            @Override
-            public void loadEvents(Date start, Date end){
-                logger.info("loadEvents from " + start.toString() + " to " + end.toString());
-            }
-        };*/
-        
         model = new DefaultScheduleModel();
-        
     }
     
  

@@ -1,6 +1,5 @@
 package org.devtty.store.security;
 
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
@@ -15,9 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.security.api.authorization.AbstractAccessDecisionVoter;
 import org.apache.deltaspike.security.api.authorization.AccessDecisionVoterContext;
-import org.apache.deltaspike.security.api.authorization.ErrorViewAwareAccessDeniedException;
 import org.apache.deltaspike.security.api.authorization.SecurityViolation;
-import org.devtty.store.security.Admin;
 import org.slf4j.Logger;
 
 

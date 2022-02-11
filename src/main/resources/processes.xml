@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!-- list the processes to be deployed -->
-<processes>
-        <process resource="diagrams/itemEntry.bpmn20.xml" />
-        <!-- <process resource="diagrams/consolidationProcess.bpmn20.xml" />  -->
-</processes>

@@ -44,7 +44,7 @@
     </security-constraint>
     
     <login-config>
-        <auth-method>KEYCLOAK</auth-method>
+        <auth-method>FORM</auth-method>
         <realm-name>devtty</realm-name>
     </login-config>
     
