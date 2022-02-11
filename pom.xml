@@ -43,7 +43,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.wildfly>26.0.1.Final</version.wildfly>
         <version.deltaspike>1.9.5</version.deltaspike>
-        <version.activiti>5.17.0</version.activiti>
+        <version.activiti>6.0.0</version.activiti>
         <version.rewrite>2.0.12.Final</version.rewrite>
 	<version.keycloak>16.1.1</version.keycloak>
 	<sonar.organization>devtty</sonar.organization>
