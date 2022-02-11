@@ -39,7 +39,7 @@ public class SearchResultConverter implements Converter{
 
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
-        if(o != null && o instanceof SearchResult){
+        if(o instanceof SearchResult){
             SearchResult result = (SearchResult) o;
 
             switch(result.getType()){

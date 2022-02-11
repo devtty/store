@@ -6,12 +6,8 @@ import javax.annotation.PostConstruct;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.identity.Group;
-import org.activiti.engine.repository.ProcessDefinition;
 import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.devtty.store.entity.User;
-import org.devtty.store.security.Admin;
 import org.slf4j.Logger;
 
 /**
@@ -20,11 +16,10 @@ import org.slf4j.Logger;
  */
 @Named
 @WindowScoped
-//@Admin
 public class UserView implements Serializable{
     
     @Inject UserRepository userRepository;
-    @Inject ProcessEngine processEngine;
+    
     @Inject Logger logger;
     
     private User user;
@@ -32,19 +27,7 @@ public class UserView implements Serializable{
     private List<User> users;
     
     private List<User> selectedUsers;
-    
-    public List<Group> getActivitigroups(){
-        return processEngine.getIdentityService().createNativeGroupQuery().list();
-    }
- 
-    public List<ProcessDefinition> getProcesslist(){
-        return processEngine.getRepositoryService().createProcessDefinitionQuery().list();
-    }
-
-    public List<Group> getUsergroups(){
-        return processEngine.getIdentityService().createGroupQuery().groupType("assignment").list();
-    }
-    
+        
     public List<User> getUsers() {
         return users;
     }

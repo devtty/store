@@ -1,6 +1,5 @@
 package org.devtty.store.view;
 
-import java.math.BigDecimal;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;

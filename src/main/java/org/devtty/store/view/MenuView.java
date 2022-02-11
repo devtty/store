@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
 import org.devtty.store.MessageResources;

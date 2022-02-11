@@ -3,7 +3,6 @@ package org.devtty.store.security;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -11,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.keycloak.KeycloakSecurityContext;
 import org.slf4j.Logger;
 
 /**
@@ -69,10 +67,10 @@ public class AuthenticationLinkView implements Serializable{
     public void init() {
         loggedIn = false;
         title = "Login";
-        if (httpSession != null && httpSession.getAttribute(KeycloakSecurityContext.class.getName()) != null) {
+        //if (httpSession != null && httpSession.getAttribute(KeycloakSecurityContext.class.getName()) != null) {
             loggedIn = true;
-            title =  ((KeycloakSecurityContext) httpSession.getAttribute(KeycloakSecurityContext.class.getName())).getToken().getEmail();
+	    //    title =  ((KeycloakSecurityContext) httpSession.getAttribute(KeycloakSecurityContext.class.getName())).getToken().getEmail();
 
-        }
+	    //}
     }
 }

@@ -7,8 +7,6 @@ import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.activiti.engine.TaskService;
-import org.activiti.engine.task.Task;
 
 /**
  *
@@ -20,23 +18,9 @@ public class OverviewBean {
     
     @Resource Principal principal;
     
-    @Inject TaskService taskService;
-    
-    private List<Task> tasks;
-    
-    
     @PostConstruct
     public void init(){
         
-        tasks = taskService.createTaskQuery().taskInvolvedUser(principal.getName()).orderByDueDate().asc().list();
-        
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-    
-    
-    
-    
 }

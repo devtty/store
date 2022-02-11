@@ -6,9 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import org.activiti.engine.IdentityService;
-import org.activiti.engine.identity.Group;
 import org.apache.commons.lang3.RandomStringUtils;
+
 import org.apache.deltaspike.core.api.projectstage.ProjectStage;
 import org.devtty.store.entity.Config;
 import org.devtty.store.entity.User;
@@ -30,11 +29,7 @@ public class Startup {
     ProjectStage projectStage;
     
     @Inject
-    EntityManager entityManager;
-    
-    @Inject
-    IdentityService identityService;
-    
+    EntityManager entityManager;    
     
     @PostConstruct
     public void init() {
@@ -64,32 +59,17 @@ public class Startup {
         
         c.setValue(Integer.toString(starts++));
         entityManager.persist(c);
-        
-        
-        //check activiti
-        logger.info("A");
-        List<Group> groups = identityService.createGroupQuery().list();
-        for(Group group : groups){
-            logger.info("Group: %s",  group.getName());
-        }
-        if(identityService.createGroupQuery().groupId("storage").list().size() == 0){
-            logger.info("Group storage not found ... created");
-            Group g = identityService.newGroup("storage");
-            g.setType("assignment");
-            g.setName("Storage");
-            identityService.saveGroup(g);
-        }
-
+      
         //just for dev TODO remove later (incl. method)
         if(ProjectStage.Development.equals(this.projectStage)){
             addSomeUsers();
         }
         
-        createIndizies();
+        //createIndizies();
         entityManager.close();
     }
     
-    
+    /*
     public void createIndizies(){
         try {
             logger.info("Build Index");
@@ -100,7 +80,7 @@ public class Startup {
         }
         
     }
-
+*/
     private void addSomeUsers() {
         logger.debug("addSomeUsers");
         for(int i = 0; i < 300; i++){

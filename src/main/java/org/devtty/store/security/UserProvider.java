@@ -4,7 +4,6 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import org.apache.deltaspike.data.api.audit.CurrentUser;
-import org.keycloak.KeycloakSecurityContext;
 
 /**
  *
@@ -16,7 +15,9 @@ public class UserProvider {
     
     @Produces @CurrentUser
     public String currentUser(){
-        return ((KeycloakSecurityContext) httpSession.getAttribute(KeycloakSecurityContext.class.getName())).getToken().getEmail();
+        //return ((KeycloakSecurityContext) httpSession.getAttribute(KeycloakSecurityContext.class.getName())).getToken().getEmail();
+	// replace w/ dummy for now
+	return "denis@devtty.de";
     }
     
 }

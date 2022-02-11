@@ -30,12 +30,7 @@ public class ExceptionHandlers {
     private Logger logger;
     
     public void handleAccessDeniedException(@Handles ExceptionEvent<ErrorViewAwareAccessDeniedException> evt){
-        //try {
-            logger.info("EH EAD");
-            //((HttpServletRequest) facesContext.getExternalContext().getRequest()).authenticate((HttpServletResponse) facesContext.getExternalContext().getResponse());
-        //} catch (IOException | ServletException ex) {
-        //    logger.error(ex.getMessage());
-       // }
+
        logger.info("X1: " + evt.getException().getErrorView().getCanonicalName());
        logger.info("X2: " + evt.getException().getMessage());
      
