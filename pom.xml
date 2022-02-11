@@ -41,11 +41,11 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.javaee_api>7.0</version.javaee_api>
-        <version.wildfly>13.0.0.Final</version.wildfly>
+        <version.wildfly>26.0.1.Final</version.wildfly>
         <version.deltaspike>1.9.3</version.deltaspike>
         <version.activiti>5.17.0</version.activiti>
         <version.rewrite>2.0.12.Final</version.rewrite>
+	<version.keycloak>16.1.1</version.keycloak>
 	<sonar.organization>devtty</sonar.organization>
 	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
@@ -56,55 +56,65 @@
             <artifactId>jboss-ejb-api_3.2_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <scope>provided</scope>
+        </dependency>-->
+        <dependency>
+          <groupId>jakarta.enterprise</groupId>
+          <artifactId>jakarta.enterprise.cdi-api</artifactId>
+          <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
+          <groupId>jakarta.validation</groupId>
+          <artifactId>jakarta.validation-api</artifactId>
+          <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+	<dependency>
+	  <groupId>jakarta.persistence</groupId>
+	  <artifactId>jakarta.persistence-api</artifactId>
+	  <scope>provided</scope>
+	</dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.faces</groupId>
-            <artifactId>jboss-jsf-api_2.2_spec</artifactId>
+            <artifactId>jboss-jsf-api_2.3_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>org.jboss.spec.javax.transaction</groupId>
             <artifactId>jboss-transaction-api_1.2_spec</artifactId>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.jboss.spec.javax.interceptor</groupId>
             <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.jboss.spec.javax.json</groupId>
             <artifactId>jboss-json-api_1.0_spec</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
+        </dependency>-->
+	<dependency>
+	  <groupId>org.jboss.spec.javax.ws.rs</groupId>
+	  <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+	  <scope>provided</scope>
+	</dependency>
+        <!--<dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
@@ -265,13 +275,13 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-core</artifactId>
-            <version>8.0.0</version>
+            <version>${version.keycloak}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-adapter-core</artifactId>
-            <version>8.0.0</version>
+            <version>${version.keycloak}</version>
             <scope>provided</scope>
         </dependency>
         
@@ -415,7 +425,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-javaee7-with-tools</artifactId>
+                <artifactId>wildfly-jakartaee8-with-tools</artifactId>
                 <version>${version.wildfly}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -549,17 +559,28 @@
             </properties>
         </profile>
         <profile>
-            <id>windows-properties-cli</id>
-            <activation>
-                <os>
-                    <family>Windows</family>
-                </os>
-            </activation>
-            <properties>
-                <app.server.java.home>D:\denis\Programme\jdk8_151</app.server.java.home>
-                <cli.executable>jboss-cli.bat</cli.executable>
-                <cli.win.working.dir>target/wildfly-${version.wildfly}/bin</cli.win.working.dir>
-            </properties>
+          <id>windows-properties-cli</id>
+          <activation>
+            <os>
+              <family>Windows</family>
+            </os>
+          </activation>
+          <properties>
+            <app.server.java.home>D:\denis\Programme\jdk8_151</app.server.java.home>
+            <cli.executable>jboss-cli.bat</cli.executable>
+          </properties>
+        </profile>
+	<profile>
+          <id>linux-properties-cli</id>
+          <activation>
+            <os>
+              <family>Unix</family>
+            </os>
+          </activation>
+          <properties>
+	    <app.server.java.home>/home/user/Programs/jdk-11.0.14+9</app.server.java.home>
+            <cli.executable>jboss-cli.sh</cli.executable>
+          </properties>
         </profile>
         <profile>
             <id>openshift</id>
@@ -661,7 +682,7 @@
                                         <artifactItem>
                                             <groupId>org.keycloak</groupId>
                                             <artifactId>keycloak-wildfly-adapter-dist</artifactId>
-                                            <version>8.0.0</version>
+                                            <version>${version.keycloak}</version>
                                             <type>zip</type>
                                             <outputDirectory>target/wildfly-${version.wildfly}/</outputDirectory>
                                         </artifactItem>
@@ -685,7 +706,6 @@
                                     <workingDirectory>target/wildfly-${version.wildfly}/bin</workingDirectory>
                                     <arguments>
                                         <argument>--file=./adapter-elytron-install-offline.cli</argument>
-                                        <!--<argument>target/wildfly-${version.wildfly}/bin</argument>-->
                                     </arguments>
                                 </configuration>
                             </execution>
