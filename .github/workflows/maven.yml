@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build and test
-        run: mvn -B -Pwildfly-managed-arquillian clean test
+        run: mvn -B -Pwildfly-managed-arquillian -Dtest=\!*FunctionalTest* clean test
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
