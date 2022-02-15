@@ -30,36 +30,28 @@ public class MenuView implements Serializable{
         
         model = new DefaultMenuModel();
         
-        DefaultMenuItem itemDashboard = new DefaultMenuItem(messages.menuDashboard());
-        DefaultMenuItem itemClients = new DefaultMenuItem(messages.menuClients());
+        DefaultMenuItem itemDashboard = DefaultMenuItem.builder().value(messages.menuDashboard()).build();
+        DefaultMenuItem itemClients = DefaultMenuItem.builder().value(messages.menuClients()).url("/clients/index.jsf").build();
         //itemClients.setHref("/clients/");
         //itemClients.setOutcome("/clients");
-        itemClients.setUrl("/clients/index.jsf");
-        DefaultMenuItem itemCollections = new DefaultMenuItem(messages.menuCollections());
-        itemCollections.setHref("/collections/");
-        DefaultMenuItem itemConsolidations = new DefaultMenuItem(messages.menuConsolidations());
-        itemConsolidations.setHref("/consolidations/");
-        DefaultMenuItem itemContracts = new DefaultMenuItem(messages.menuContracts());
-        itemContracts.setHref("/contracts/");
-        DefaultMenuItem itemContractors = new DefaultMenuItem(messages.menuContractors());
-        itemContractors.setHref("/contractors/");
-        DefaultMenuItem itemItems = new DefaultMenuItem(messages.menuItems());
-        itemItems.setHref("/items/");
-        DefaultMenuItem itemStores = new DefaultMenuItem(messages.menuStores());
-        itemStores.setHref("/stores/");
-        DefaultMenuItem itemUsers = new DefaultMenuItem(messages.menuUsers(), "fa fa-user");
-        //itemUsers.setHref("/users/index.jsf");
-        itemUsers.setUrl("/users/index.jsf");
         
-        model.addElement(itemDashboard);
-        model.addElement(itemClients);
-        model.addElement(itemCollections);
-        model.addElement(itemConsolidations);
-        model.addElement(itemContracts);
-        model.addElement(itemContractors);
-        model.addElement(itemItems);
-        model.addElement(itemStores);
-        model.addElement(itemUsers);
+        DefaultMenuItem itemCollections = DefaultMenuItem.builder().value(messages.menuCollections()).url("/collections").build();
+        DefaultMenuItem itemConsolidations = DefaultMenuItem.builder().value(messages.menuConsolidations()).url("/consolidations/").build();
+        DefaultMenuItem itemContracts = DefaultMenuItem.builder().value(messages.menuContracts()).url("/contracts").build();
+        DefaultMenuItem itemContractors = DefaultMenuItem.builder().value(messages.menuContractors()).url("/contractors/").build();
+        DefaultMenuItem itemItems = DefaultMenuItem.builder().value(messages.menuItems()).url("/items/").build();
+        DefaultMenuItem itemStores = DefaultMenuItem.builder().value(messages.menuStores()).url("/stores/").build();
+        DefaultMenuItem itemUsers = DefaultMenuItem.builder().value(messages.menuUsers()).url("/users").icon("fa fa-user").build();
+        
+        model.getElements().add(itemDashboard);
+        model.getElements().add(itemClients);
+        model.getElements().add(itemCollections);
+        model.getElements().add(itemConsolidations);
+        model.getElements().add(itemContracts);
+        model.getElements().add(itemContractors);
+        model.getElements().add(itemItems);
+        model.getElements().add(itemStores);
+        model.getElements().add(itemUsers);
         /*DefaultSubMenu listSubmenu = new DefaultSubMenu(messages.menuLists(), "fa fa-list");
         DefaultSubMenu audienceSubmenu = new DefaultSubMenu(messages.menuAudience(), "fa fa-user");
         

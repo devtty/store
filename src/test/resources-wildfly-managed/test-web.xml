@@ -16,10 +16,10 @@
         <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
-    <context-param>
+<!--    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>omega</param-value>
-    </context-param>
+    </context-param>-->
     <context-param>
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>
@@ -44,7 +44,7 @@
     </security-constraint>
     
     <login-config>
-        <auth-method>KEYCLOAK</auth-method>
+        <auth-method>FORM</auth-method>
         <realm-name>devtty</realm-name>
     </login-config>
     
