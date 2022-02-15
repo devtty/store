@@ -14,6 +14,7 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
+
 import org.slf4j.Logger;
 
 /**
@@ -58,7 +59,7 @@ public class CalendarView implements Serializable{
      
     public void onDateSelect(SelectEvent selectEvent) {
         logger.info("date select: " + selectEvent.getObject().toString());
-        event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+        //event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
     }
     
     public ScheduleModel getModel() {
