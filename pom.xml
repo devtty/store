@@ -38,7 +38,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.wildfly>26.1.2.Final</version.wildfly>
-        <version.deltaspike>1.9.5</version.deltaspike>
+        <version.deltaspike>1.9.6</version.deltaspike>
         <version.rewrite>2.0.12.Final</version.rewrite>
 	<version.keycloak>16.1.1</version.keycloak>
 	<sonar.organization>devtty</sonar.organization>
