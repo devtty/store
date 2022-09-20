@@ -292,7 +292,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -479,7 +479,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>l10n-maven-plugin</artifactId>
-                <version>1.0-alpha-2</version>
+                <version>1.0.0</version>
                 <configuration>
                     <locales>
                         <locale>de</locale>
@@ -538,7 +538,7 @@
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>fabric8-maven-plugin</artifactId>
-                        <version>4.4.1</version>
+                        <version>4.4.2</version>
                     </plugin>
                 </plugins>
             </build>
