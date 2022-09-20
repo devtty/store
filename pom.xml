@@ -292,7 +292,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -452,7 +452,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.16.0</version>
+                <version>3.19.0</version>
             </plugin>
             <plugin>
                 <groupId>org.owasp</groupId>
@@ -479,7 +479,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>l10n-maven-plugin</artifactId>
-                <version>1.0-alpha-2</version>
+                <version>1.0.0</version>
                 <configuration>
                     <locales>
                         <locale>de</locale>
