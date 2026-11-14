@@ -11,7 +11,6 @@ import javax.persistence.criteria.Root;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
 import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
 import org.devtty.store.entity.Client;
-import org.devtty.store.entity.Client_;
 import org.devtty.store.service.ClientRepository;
 
 /**
@@ -55,10 +54,10 @@ public class ClientSearchView extends AbstractPersistableSearchView<Client>{
     protected Predicate[] getPredicates(CriteriaBuilder b, Root<Client> client) {
         List<Predicate> prdcts = new ArrayList<>();
         if(name != null && !name.isEmpty()){
-            prdcts.add(b.like(client.get(Client_.name), "%" + name + "%"));
+            prdcts.add(b.like(client.get("name"), "%" + name + "%"));
         }
         if(address != null && !address.isEmpty()){
-            prdcts.add(b.like(client.get(Client_.address), "%" + address + "%"));
+            prdcts.add(b.like(client.get("address"), "%" + address + "%"));
         }
             
         
