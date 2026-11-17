@@ -1,8 +1,8 @@
 package org.devtty.store.service;
 
+import jakarta.data.repository.CrudRepository;
+import jakarta.data.repository.Repository;
 import java.util.List;
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
 import org.devtty.store.entity.Store;
 
 /**
@@ -10,8 +10,8 @@ import org.devtty.store.entity.Store;
  * @author Denis Renning
  */
 
-@Repository(forEntity = Store.class)
-public interface StoreRepository extends EntityRepository<Store, Long> {
+@Repository
+public interface StoreRepository extends AbstractPersistableRepository<Store, Long> {
     
     public List<Store> findAllOrderByNameAsc();
     

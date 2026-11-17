@@ -1,10 +1,10 @@
 package org.devtty.store.converter;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.convert.FacesConverter;
+import jakarta.inject.Inject;
 import org.devtty.store.entity.Client;
 import org.devtty.store.entity.Item;
 import org.devtty.store.entity.User;
@@ -30,7 +30,7 @@ public class SearchResultConverter implements Converter{
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {       
         SearchResult result = null;
         if(string.startsWith(SearchResult.SR_USER)){
-            User user = userRepository.findBy(extractId(string));
+            User user = userRepository.findById(extractId(string)).get();
             result = new SearchResult(user);
         }
             

@@ -1,12 +1,12 @@
 package org.devtty.store.entity;
 
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.validation.constraints.Size;
 
 /**
  *
@@ -58,7 +58,7 @@ public class Consolidation extends AbstractPersistable{
     private String ordernr;
     private String fixDate;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(jakarta.persistence.TemporalType.DATE)
     private Date execDate;
     private String contractDate;
     

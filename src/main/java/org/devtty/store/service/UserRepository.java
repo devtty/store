@@ -1,7 +1,7 @@
 package org.devtty.store.service;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
+import jakarta.data.repository.CrudRepository;
+import jakarta.data.repository.Repository;
 import org.devtty.store.entity.User;
 
 /**
@@ -9,9 +9,6 @@ import org.devtty.store.entity.User;
  * @author Denis Renning
  */
 
-@Repository(forEntity = User.class)
-public interface UserRepository extends EntityRepository<User, Long>{
-    
-    
-    
+@Repository
+public interface UserRepository extends CrudRepository<User, Long>{
 }

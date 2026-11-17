@@ -1,25 +1,22 @@
 package org.devtty.store.util;
 
-import java.util.List;
 import java.util.UUID;
-import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.Singleton;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import org.apache.deltaspike.core.api.projectstage.ProjectStage;
 import org.devtty.store.entity.Config;
 import org.devtty.store.entity.User;
-import org.hibernate.search.jpa.FullTextEntityManager;
-import org.hibernate.search.jpa.Search;
 import org.slf4j.Logger;
 
 /**
  * @author Denis Renning <denis at devtty.de>
  */
 @Singleton
-@javax.ejb.Startup
+@jakarta.ejb.Startup
 public class Startup {
  
     @Inject 

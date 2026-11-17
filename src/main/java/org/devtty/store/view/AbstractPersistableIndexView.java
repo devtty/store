@@ -1,19 +1,19 @@
 package org.devtty.store.view;
 
+import org.devtty.store.service.AbstractPersistableRepository;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import org.apache.deltaspike.core.api.provider.BeanProvider;
-import org.apache.deltaspike.data.api.EntityRepository;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.inject.spi.CDI;
 import org.devtty.store.entity.AbstractPersistable;
 
 /**
  *
  * @author Denis Renning <denis@devtty.de>
  */
-public abstract class AbstractPersistableIndexView<REPO extends EntityRepository<ENT, Long>, ENT extends AbstractPersistable> implements Serializable {
+public abstract class AbstractPersistableIndexView<REPO extends AbstractPersistableRepository<ENT, Long>, ENT extends AbstractPersistable> implements Serializable {
 
     private ENT detail;
     
@@ -47,8 +47,7 @@ public abstract class AbstractPersistableIndexView<REPO extends EntityRepository
     
     @PostConstruct
     public void init(){
-        REPO repo = BeanProvider.getContextualReference(getRepositoryClass());
-        all = repo.findAll();
+        all = CDI.current().select(getRepositoryClass()).get().findAll().toList();
     }
     
     private Class<REPO> getRepositoryClass(){
@@ -56,6 +55,6 @@ public abstract class AbstractPersistableIndexView<REPO extends EntityRepository
     }
     
     public boolean isPartial(){
-        return (all != null) && BeanProvider.getContextualReference(getRepositoryClass()).count().intValue() - all.size() != 0;
+        return (all != null) && CDI.current().select(getRepositoryClass()).get().countAll() - all.size() != 0;
     }
 }

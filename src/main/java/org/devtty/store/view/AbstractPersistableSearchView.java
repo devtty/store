@@ -3,15 +3,15 @@ package org.devtty.store.view;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.inject.spi.CDI;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
-import org.apache.deltaspike.core.api.provider.BeanProvider;
 import org.devtty.store.entity.AbstractPersistable;
 
 /**
@@ -53,7 +53,7 @@ public abstract class AbstractPersistableSearchView<ENT extends AbstractPersista
         
         List<ENT> searchedFor = entityManager.createQuery(q).getResultList();
         
-        AbstractPersistableIndexView v = BeanProvider.getContextualReference(getIndexView());
+        AbstractPersistableIndexView v = CDI.current().select(getIndexView()).get();
         v.setAll(searchedFor);
         
         return getIndexPage();

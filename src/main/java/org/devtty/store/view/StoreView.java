@@ -1,15 +1,14 @@
 package org.devtty.store.view;
 
-import java.io.StringReader;
-import javax.enterprise.inject.Model;
-import javax.inject.Inject;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.enterprise.inject.Model;
+import jakarta.faces.lifecycle.ClientWindowScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
-import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.devtty.store.entity.Store;
 import org.devtty.store.service.StoreRepository;
 import org.primefaces.model.DefaultTreeNode;
@@ -21,7 +20,7 @@ import org.slf4j.Logger;
  * @author Denis Renning <denis at devtty.de>
  */
 @Model
-@WindowScoped
+@ClientWindowScoped
 public class StoreView extends AbstractPersistableIndexView<StoreRepository, Store>{
     
     @Inject StoreRepository storeRepository;

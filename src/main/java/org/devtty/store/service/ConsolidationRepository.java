@@ -1,7 +1,7 @@
 package org.devtty.store.service;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
+import jakarta.data.repository.CrudRepository;
+import jakarta.data.repository.Repository;
 import org.devtty.store.entity.Consolidation;
 
 /**
@@ -9,7 +9,7 @@ import org.devtty.store.entity.Consolidation;
  * @author Denis Renning
  */
 
-@Repository(forEntity = Consolidation.class)
-public interface ConsolidationRepository extends EntityRepository<Consolidation, Long> {
+@Repository
+public interface ConsolidationRepository extends AbstractPersistableRepository<Consolidation, Long> {
     
 }

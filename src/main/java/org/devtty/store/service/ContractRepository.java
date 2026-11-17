@@ -1,7 +1,7 @@
 package org.devtty.store.service;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
+import jakarta.data.repository.CrudRepository;
+import jakarta.data.repository.Repository;
 import org.devtty.store.entity.Contract;
 
 /**
@@ -9,7 +9,7 @@ import org.devtty.store.entity.Contract;
  * @author Denis Renning
  */
 
-@Repository(forEntity = Contract.class)
-public interface ContractRepository extends EntityRepository<Contract, Long> {
+@Repository
+public interface ContractRepository extends AbstractPersistableRepository<Contract, Long> {
     
 }

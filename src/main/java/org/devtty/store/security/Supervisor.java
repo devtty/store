@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import javax.enterprise.inject.Stereotype;
+import jakarta.enterprise.inject.Stereotype;
 import org.apache.deltaspike.security.api.authorization.Secured;
 
 /**

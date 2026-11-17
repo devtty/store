@@ -1,23 +1,18 @@
 package org.devtty.store.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
 import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
 import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
 import org.devtty.store.util.validation.Email;
-import org.hibernate.search.annotations.Analyzer;
-import org.hibernate.search.annotations.AnalyzerDef;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Parameter;
-import org.hibernate.search.annotations.TokenFilterDef;
-import org.hibernate.search.annotations.TokenizerDef;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 /**
  *
@@ -27,21 +22,13 @@ import org.hibernate.search.annotations.TokenizerDef;
 @Entity
 @Table(name = "ST_USER", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @SequenceGenerator(name = "SQ_GEN", sequenceName = "ST_SQ_USER")
-@Indexed
-@AnalyzerDef(name = "useranalyzer",
-        tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-        filters = {
-            @TokenFilterDef(factory = LowerCaseFilterFactory.class),
-            @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
-                @Parameter(name = "maxGramSize", value = "8"),
-                @Parameter(name = "minGramSize", value = "3")}),})
-@Analyzer(definition = "useranalyzer")
 //@IdentityEntity(EntityType.IDENTITY_OBJECT)
+@Indexed
 public class User extends AbstractPersistable{
     
     @NotNull
     @Size(min = 5, max=60)
-    @Field
+    @FullTextField
     private String name;
     
     @NotNull

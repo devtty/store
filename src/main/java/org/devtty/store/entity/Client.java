@@ -1,23 +1,14 @@
 package org.devtty.store.entity;
 
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
-
-import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
-import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
-import org.hibernate.search.annotations.Analyzer;
-import org.hibernate.search.annotations.AnalyzerDef;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Parameter;
-import org.hibernate.search.annotations.TokenFilterDef;
-import org.hibernate.search.annotations.TokenizerDef;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 /**
  *
@@ -27,14 +18,6 @@ import org.hibernate.search.annotations.TokenizerDef;
 @Table(name = "ST_CLIENT")
 @SequenceGenerator(name = "SQ_GEN", sequenceName = "ST_SQ_CLIENT")
 @Indexed
-@AnalyzerDef(name = "clientanalyzer",
-        tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-        filters = {
-            @TokenFilterDef(factory = LowerCaseFilterFactory.class),
-            @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
-                @Parameter(name = "maxGramSize", value = "8"),
-                @Parameter(name = "minGramSize", value = "3")}),})
-@Analyzer(definition = "clientanalyzer")
 public class Client extends AbstractPersistable{
 
     @OneToMany(mappedBy = "client")
@@ -42,7 +25,7 @@ public class Client extends AbstractPersistable{
 
     @NotNull
     @Size(min = 3, max = 255)
-    @Field
+    @FullTextField
     private String name;
 
     @Size(max = 255)

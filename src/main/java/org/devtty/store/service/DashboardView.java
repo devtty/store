@@ -1,6 +1,6 @@
 package org.devtty.store.service;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 /**
  *

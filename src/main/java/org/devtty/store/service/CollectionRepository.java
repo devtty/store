@@ -1,7 +1,7 @@
 package org.devtty.store.service;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
+import jakarta.data.repository.CrudRepository;
+import jakarta.data.repository.Repository;
 import org.devtty.store.entity.Collection;
 
 /**
@@ -9,7 +9,7 @@ import org.devtty.store.entity.Collection;
  * @author Denis Renning
  */
 
-@Repository(forEntity = Collection.class)
-public interface CollectionRepository extends EntityRepository<Collection, Long>{
+@Repository
+public interface CollectionRepository extends AbstractPersistableRepository<Collection, Long>{
     
 }

@@ -4,19 +4,17 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.persistence.EntityManager;
-import org.apache.deltaspike.jpa.api.transaction.Transactional;
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.apache.lucene.search.Query;
 import org.devtty.store.entity.Client;
 import org.devtty.store.entity.Item;
 import org.devtty.store.entity.User;
-import org.hibernate.search.jpa.FullTextEntityManager;
-import org.hibernate.search.jpa.Search;
-import org.hibernate.search.query.dsl.QueryBuilder;
+import org.hibernate.search.mapper.orm.session.SearchSession;
 import org.primefaces.event.SelectEvent;
 import org.slf4j.Logger;
 
@@ -38,6 +36,9 @@ public class SearchView implements Serializable{
     private UserView userView;
     
     @Inject
+    SearchSession searchSession;
+    
+    @Inject
     private Logger logger;
 
     private SearchResult term;
@@ -54,41 +55,34 @@ public class SearchView implements Serializable{
     public void init(){
     }
     
-    @Transactional(readOnly = true)
+    @Transactional
     public List<SearchResult> complete(String query){
         List<SearchResult> s = new ArrayList<>();
       
         logger.debug("SEARCH LUCENE %s", query);
         
-        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+        org.hibernate.search.engine.search.query.SearchResult<Client> fetchAllSearchResult = searchSession.search(Client.class).where(q -> q.simpleQueryString().field("name").matching(query)).fetchAll();
+        List<Client> hits = fetchAllSearchResult.hits();
         
-        QueryBuilder builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Client.class).get();
+        logger.debug("hits: %s", hits.size());
         
-        Query q = builder.keyword().onField("name").matching(query).createQuery();
-        javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(q, Client.class);
-        
-        List result = jpaQuery.getResultList();
-        logger.debug("result: %s", result.size());
-        
-        for(Object u : result){
-            s.add(new SearchResult((Client) u));
+       
+        for(Client c : hits){
+            s.add(new SearchResult(c));
         }
         
-        builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
-        q = builder.keyword().onField("name").matching(query).createQuery();
-        jpaQuery = fullTextEntityManager.createFullTextQuery(q, User.class);
-        result = jpaQuery.getResultList();
+        org.hibernate.search.engine.search.query.SearchResult<User> fetchAllUsers = searchSession.search(User.class).where(q -> q.simpleQueryString().field("name").matching(query)).fetchAll();
+        List<User> userList = fetchAllUsers.hits();
         
-        for(Object u : result){
-            s.add(new SearchResult((User) u));
+        for(User u : userList){
+            s.add(new SearchResult(u));
         }
         
-        builder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Item.class).get();
-        q = builder.keyword().onField("name").matching(query).createQuery();
-        jpaQuery = fullTextEntityManager.createFullTextQuery(q, Item.class);
-        result = jpaQuery.getResultList();
-        for(Object i : result){
-            s.add(new SearchResult((Item) i));
+        org.hibernate.search.engine.search.query.SearchResult<Item> fetchAllItems = searchSession.search(Item.class).where(q -> q.simpleQueryString().field("name").matching(query)).fetchAll();
+        List<Item> itemList = fetchAllItems.hits();
+        
+        for(Item i : itemList){
+            s.add(new SearchResult(i));
         }
         
         return s;

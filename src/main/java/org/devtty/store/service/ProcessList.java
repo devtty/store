@@ -1,8 +1,8 @@
 package org.devtty.store.service;
 
 import java.util.List;
-import javax.enterprise.inject.Produces;
-import javax.inject.Named;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Named;
 
 /**
  *

@@ -2,10 +2,10 @@ package org.devtty.store.service;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.devtty.store.entity.User;
 import org.slf4j.Logger;
@@ -78,7 +78,7 @@ public class UserView implements Serializable{
     
     @PostConstruct
     public void init(){
-        users = userRepository.findAll();
+        users = userRepository.findAll().toList();
         user = users.get(0);
     }
 }

@@ -1,16 +1,16 @@
 package org.devtty.store.service;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
+import jakarta.data.repository.DataRepository;
+import jakarta.data.repository.Repository;
 import org.devtty.store.entity.Config;
 
 /**
  *
  * @author Denis Renning <denis at devtty.de>
  */
-@Repository(forEntity = Config.class)
-public interface ConfigRepository extends EntityRepository<Config, String>{
+@Repository
+public interface ConfigRepository extends DataRepository<Config, String>{
     
-    
+    Config findByKey(String key);
     
 }

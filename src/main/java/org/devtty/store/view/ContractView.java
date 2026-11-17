@@ -1,9 +1,9 @@
 package org.devtty.store.view;
 
-import javax.enterprise.inject.Model;
-import javax.inject.Inject;
+import jakarta.enterprise.inject.Model;
+import jakarta.faces.lifecycle.ClientWindowScoped;
+import jakarta.inject.Inject;
 import org.apache.deltaspike.core.api.config.view.ViewConfig;
-import org.apache.deltaspike.core.api.scope.WindowScoped;
 import org.devtty.store.entity.Contract;
 import org.devtty.store.service.ContractRepository;
 import org.slf4j.Logger;
@@ -13,7 +13,7 @@ import org.slf4j.Logger;
  * @author Denis Renning <denis at devtty.de>
  */
 @Model
-@WindowScoped
+@ClientWindowScoped
 public class ContractView extends AbstractPersistableIndexView<ContractRepository, Contract>{
     
     @Inject ContractRepository contractRepository;

@@ -1,9 +1,9 @@
 package org.devtty.store.service;
 
 import java.util.List;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  *
@@ -17,7 +17,7 @@ public class StoreList {
     @Produces
     @Named("storeList")
     public List getStoreList(){
-        return storeRepository.findAll();
+        return storeRepository.findAll().toList();
     }
     
 }

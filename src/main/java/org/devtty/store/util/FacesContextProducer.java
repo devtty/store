@@ -1,7 +1,7 @@
 package org.devtty.store.util;
 
-import javax.enterprise.inject.Produces;
-import javax.faces.context.FacesContext;
+import jakarta.enterprise.inject.Produces;
+import jakarta.faces.context.FacesContext;
 
 /**
  *

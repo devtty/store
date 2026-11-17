@@ -1,6 +1,6 @@
 package org.devtty.store.util;
 
-import javax.enterprise.inject.Specializes;
+import jakarta.enterprise.inject.Specializes;
 import org.apache.deltaspike.jsf.api.config.JsfModuleConfig;
 import org.apache.deltaspike.jsf.spi.scope.window.ClientWindowConfig;
 

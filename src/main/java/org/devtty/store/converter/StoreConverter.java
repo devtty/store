@@ -1,7 +1,7 @@
 package org.devtty.store.converter;
 
-import javax.faces.convert.FacesConverter;
-import javax.inject.Named;
+import jakarta.faces.convert.FacesConverter;
+import jakarta.inject.Named;
 import org.devtty.store.entity.Store;
 import org.devtty.store.service.StoreRepository;
 

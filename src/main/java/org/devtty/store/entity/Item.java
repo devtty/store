@@ -2,32 +2,23 @@ package org.devtty.store.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.apache.deltaspike.data.api.audit.CreatedOn;
 import org.apache.deltaspike.data.api.audit.ModifiedOn;
-import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
-import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
-import org.apache.lucene.analysis.standard.StandardTokenizerFactory;
 import org.hibernate.envers.Audited;
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
-import org.hibernate.search.annotations.Analyzer;
-import org.hibernate.search.annotations.AnalyzerDef;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Parameter;
-import org.hibernate.search.annotations.TokenFilterDef;
-import org.hibernate.search.annotations.TokenizerDef;
-
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 /**
  *
  * @author Denis Renning
@@ -37,13 +28,6 @@ import org.hibernate.search.annotations.TokenizerDef;
 @SequenceGenerator(name = "SQ_GEN", sequenceName = "ST_SQ_ITEM")
 @Audited(targetAuditMode = NOT_AUDITED)
 @Indexed
-@AnalyzerDef(name = "itemanalyzer",
-        tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-        filters = {
-            @TokenFilterDef(factory = LowerCaseFilterFactory.class),
-            @TokenFilterDef(factory = EdgeNGramFilterFactory.class, params = {
-                @Parameter(name = "maxGramSize", value = "8"),
-                @Parameter(name = "minGramSize", value = "3")}),})
 public class Item extends AbstractPersistable{
     
     @Size(max = 20)
@@ -53,8 +37,7 @@ public class Item extends AbstractPersistable{
     private String startcorporation;
     
     @NotNull
-    @Field
-    @Analyzer(definition = "itemanalyzer")
+    @FullTextField
     private String name;
     private String inMProblem;
     private String docs;

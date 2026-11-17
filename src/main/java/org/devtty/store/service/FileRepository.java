@@ -1,7 +1,7 @@
 package org.devtty.store.service;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
+import jakarta.data.repository.DataRepository;
+import jakarta.data.repository.Repository;
 import org.devtty.store.entity.File;
 
 /**
@@ -9,7 +9,7 @@ import org.devtty.store.entity.File;
  * @author Denis Renning
  */
 
-@Repository(forEntity = File.class)
-public interface FileRepository extends EntityRepository<File, Long> {
+@Repository
+public interface FileRepository extends DataRepository<File, Long> {
     
 }

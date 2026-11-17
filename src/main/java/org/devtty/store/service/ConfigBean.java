@@ -1,7 +1,7 @@
 package org.devtty.store.service;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import org.devtty.store.entity.Config;
 
 /**
@@ -15,7 +15,7 @@ public class ConfigBean {
     
     
     public String getValue(String str){
-        Config c = configRepository.findBy(str);
+        Config c = configRepository.findByKey(str);
         return c!=null ? c.getValue() : null;
     }
     
